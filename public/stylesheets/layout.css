@@ -1,0 +1,30 @@
+#headerbg {
+	width:100%;
+	height:50px;
+	position:relative;
+	top: 0px;
+}
+#header {
+	height:100%;
+	background-color: #3b76a2;
+	text-align:center;
+}
+
+#logo{
+	height:0%;
+}
+
+#logo img{
+	height: 45px; /* headerbgのheightよりも小さめ */
+	width: auto;
+	margin: 0 auto;
+}
+
+#login_button {
+	height: 100%;	
+	float:right;
+}
+
+#login_button button{
+	line-height:30px ;
+}
