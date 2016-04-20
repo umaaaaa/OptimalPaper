@@ -11,6 +11,7 @@ body {
     text-align: right;
     display: block;
     margin-top: 60px;
+    height: 500px;
 }
 .star {
     background-color: #57a544;
