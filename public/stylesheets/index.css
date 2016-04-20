@@ -35,8 +35,13 @@ body {
 .info > p {
     color: #717171;
     font-size: 16px;
+    height: 320px;
     padding-top: 10px;
     text-align: justify;
+    overflow: scroll;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 14;
 }
 .info > a {
     background-color: #03a9f4;
