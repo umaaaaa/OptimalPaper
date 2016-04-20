@@ -4,6 +4,18 @@ var db = require('./db');
 
 var users = {};
 
+users.getById = function (id) {
+  return new Promise(function(resolve, reject) {
+    db.query('select id,auth,id_auth,name from user where id = ?',
+      [id],
+      function(err, rows) {
+        if (err) return reject(err);
+        if (rows.length == 1) return resolve(rows[0]);
+        reject(new Error('Count of selected user is not 1'));
+      });
+  });
+};
+
 users.getByAuthId = function (auth, id_auth) {
   return new Promise(function(resolve, reject) {
     db.query('select id,auth,id_auth,name from user where auth = ? and id_auth = ?',
