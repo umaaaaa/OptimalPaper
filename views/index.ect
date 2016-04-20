@@ -1,6 +1,81 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
-    <link rel='stylesheet' href='/css/style.css' />
+<link href="stylesheets/index.css" rel="stylesheet">
+<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="/javascripts/app.js"></script>
 <% end %>
-<h1><%- @title %></h1>
-<p>Welcome to <%- @title %></p>
+
+
+<div class="container">
+  <!-- 検索フォーム -->
+  <div class="search_form">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>論文検索</h2>
+        <div id="custom-search-input">
+          <form class="form-search" method="get" id="keyword" action="/">
+            <div class="input-group col-md-12">
+              <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value="" />
+              <span class="input-group-btn">
+                <button class="btn btn-info btn-lg" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIXME:サーバサイドから渡ってくる名前等が決まったら、if文、for文を書く -->
+  <!-- http://qiita.com/n0bisuke/items/ad5bac66dec3ddc6fdd3 -->
+
+  <div class="searchResult">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="box">
+          <div class="star">
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+          </div>
+          <div class="info">
+            <h4 class="text-center">Title</h4>
+            <p>hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
+            <a href="" class="btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="box">
+          <div class="star">
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+          </div>
+          <div class="info">
+            <h4 class="text-center">Title</h4>
+            <p>hoge hoge hoge hoge hoge hoge</p>
+            <a href="" class="btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="box">
+          <div class="star">
+            <span class="fa fa-2x fa-star"></span>
+          </div>
+          <div class="info">
+            <h4 class="text-center">Title</h4>
+            <p>hoge hoge hoge hoge hoge hoge</p>
+            <a href="" class="btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
