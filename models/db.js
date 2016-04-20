@@ -4,6 +4,6 @@ var mysql = require('mysql');
 module.exports = mysql.createPool({
   host: process.env.OP_DB_HOST || 'localhost',
   user: process.env.OP_DB_USER || 'optimalpaper',
-  password: process.env.OP_DB_PASS,
+  password: process.env.OP_DB_PASS || 'develop',
   database: process.env.OP_DB_NAME || 'optimalpaper'
 });
