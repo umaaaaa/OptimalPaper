@@ -1,10 +1,14 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
-<link rel='stylesheet' href='/css/style.css' />
+<link href="stylesheets/index.css" rel="stylesheet">
+<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
 
 
 <div class="container">
+
+<!-- 検索フォームについて -->
   <div class="row">
     <div class="col-6 col-sm-6 col-lg-4">
       <h2>論文検索</h2>
@@ -22,4 +26,40 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="box">
+          <div class="star">
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+          </div>
+          <div class="info">
+            <h4 class="text-center">Title</h4>
+            <p>hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
+            <a href="" class="btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="box">
+          <div class="star">
+            <span class="fa fa-2x fa-star"></span>
+            <span class="fa fa-2x fa-star"></span>
+          </div>
+          <div class="info">
+            <h4 class="text-center">Title</h4>
+            <p>hoge hoge hoge hoge hoge hoge</p>
+            <a href="" class="btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
