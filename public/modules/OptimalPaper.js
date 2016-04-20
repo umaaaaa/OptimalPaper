@@ -1,3 +1,3 @@
-angular.module('OptimalPaper', ['testApp'])
+angular.module('OptimalPaper', [])
 .controller('OPController', function($scope){
 })
