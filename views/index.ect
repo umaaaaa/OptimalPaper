@@ -3,10 +3,15 @@
 <link href="stylesheets/index.css" rel="stylesheet">
 <!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="/javascripts/app.js"></script>
 <% end %>
 
 
 <div class="container">
+
+  <p ng-controller="testAppController1">
+    {{message}}
+  </p>
 
   <!-- 検索フォーム -->
   <div class="search_form">
