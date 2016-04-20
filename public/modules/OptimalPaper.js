@@ -1,4 +1,3 @@
-angular.module('OptimalPaper', ['OP2'])
+angular.module('OptimalPaper', [])
 .controller('OPController', function($scope){
-	$scope.run="hoehgoegheo";
 })
