@@ -4,13 +4,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+// db connection setup
+var pool = mysql.createPool({
+  host: process.env.OP_DB_HOST || 'localhost',
+  user: process.env.OP_DB_USER || 'optimalpaper',
+  password: process.env.OP_DB_PASS,
+  database: process.env.OP_DB_NAME || 'optimalpaper'
+});
+app.set('pool', pool);
+
+//view engine setup
 var ectRenderer = require('ect')({ watch: true, root: path.join(__dirname, 'views'), ext : '.ect' });
 app.engine('ect', ectRenderer.render);
 app.set('view engine', 'ect');
