@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%- @title %></title>
-    <% content 'css': %>
-  </head>
-  <body>
-    <% content %>
-  </body>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title><%= @title %></title>
+		
+		<link href="stylesheets/layout.css" rel="stylesheet">
+		<link href="stylesheets/style.css" rel="stylesheet">
+		<!-- Bootstrap -->
+		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	</head>
+	<body>
+		<!-- ヘッダー部分 -->
+		<div id="headerbg">
+			<div id="header">
+				<!-- ロゴ画像 -->
+				<div id="logo">
+					<img src="/images/logo.png">
+				</div>
+				
+				<!-- ログインボタン -->
+				<div id="login_button">
+					<button type="button" class="btn btn-primary">login</button>
+				</div>
+			</div>
+		</div>
+	
+		<!-- body部分 -->
+		<div id="Main">
+			<% content %>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
 </html>
