@@ -30,11 +30,13 @@ cinii.fetchDetailByNaid = function (naid) {
           references: paper['cinii:references'],
           citedBy: paper['cinii:citedBy'],
           description: paper['dc:description']
-            && paper['dc:description'][0]['@value']
+            && paper['dc:description'][0]['@value'],
+          id_repo: naid
         };
       });
 };
 
+//TODO
 cinii.searchOrderByCited = function (keyword, opt_max) {
   var max = opt_max || 1000;
   var max_per_req = 200;
@@ -65,7 +67,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
           return agent
             .get(endpoint)
             .query({
-              format: 'json';
+              format: 'json',
               q: keyword,
               sortorder: citedBy,
               count: max_per_req,
@@ -99,7 +101,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
             page: {start: paper['prism:startingPage'], end: paper['prism:endingPage']},
             date: paper['prism:publicationDate'] },
           description: paper['description'],
-          id: Number(paper['@id'].split('/').pop())
+          id_repo: Number(paper['@id'].split('/').pop())
         };
       });
     });
