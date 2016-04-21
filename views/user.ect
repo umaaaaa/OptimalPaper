@@ -1,6 +1,7 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
 <link href="/stylesheets/user.css" rel="stylesheet">
+<link href="/stylesheets/paper_template.css" rel="stylesheet">
 <!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
@@ -25,47 +26,9 @@
 	<h1>読んだ論文</h1>
 	<div class="paper">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-				<div class="box">
-					<div class="star">
-						<span class="fa fa-2x fa-star"></span>
-						<span class="fa fa-2x fa-star"></span>
-						<span class="fa fa-2x fa-star"></span>
-					</div>
-					<div class="info">
-						<h4 class="text-center">Title</h4>
-						<p>hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
-						<a href="" class="btn">Learn more</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-				<div class="box">
-					<div class="star">
-						<span class="fa fa-2x fa-star"></span>
-						<span class="fa fa-2x fa-star"></span>
-					</div>
-					<div class="info">
-						<h4 class="text-center">Title</h4>
-						<p>hhoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogeoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hoge</p>
-						<a href="" class="btn">Learn more</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-				<div class="box">
-					<div class="star">
-						<span class="fa fa-2x fa-star"></span>
-					</div>
-					<div class="info">
-						<h4 class="text-center">Title</h4>
-						<p>hoge hoge hoge hoge hoge hoge</p>
-						<a href="" class="btn">Learn more</a>
-					</div>
-				</div>
-			</div>
+       <% for paper in @papers : %>
+        <% include 'paper_template.ect',{paper:paper} %>
+       <% end %>
 		</div>
 	</div>
 
