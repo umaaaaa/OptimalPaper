@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS user(
   id_auth BIGINT UNSIGNED NOT NULL,
   name NVARCHAR(64) NOT NULL,
   icon_url NVARCHAR(512) NOT NULL,
-  registererd_at DATETIME NOT NULL,
+  registered_at DATETIME NOT NULL,
   PRIMARY KEY(id)
 );
 
