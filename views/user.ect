@@ -1,13 +1,74 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
+<link href="/stylesheets/user.css" rel="stylesheet">
+<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
-
-<div id="userpage">
-	<h2>〇〇さんの読んだ論文</h2>
-	<div id="prof-pic">
-		<img src="http://placehold.it/200x200">
+<div class="container">
+	<div id="profile" class="col-md-3">
+		<img id="picture" src="http://placehold.it/200x200">
+		<div id="detail">
+			<h2> <%= @id %> さん </h2>
+			<ul class="list-group">
+				<li class="list-group-item">サービス登録日：2016/4/1 </li>
+				<li class="list-group-item">読んだ論文数</li>
+				<ul class="lisit-group">
+					<li class="list-group-item">総数：1024 本</li>
+					<li class="list-group-item">月間：10 本</li>
+			</ul>
+		</div>
 	</div>
+	<div id="tree" class="col-md-6">
+		<h2><%= @id %>さんの進捗 </h2>
+		<img name="max-tree" src="/images/tree.jpg">
+	</div>
+</div>
+<div class="container">
+	<h1>読んだ論文</h1>
 	<div class="paper">
-		<img src="http://placehold.it/200x200">
-	</div>	
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+				<div class="box">
+					<div class="star">
+						<span class="fa fa-2x fa-star"></span>
+						<span class="fa fa-2x fa-star"></span>
+						<span class="fa fa-2x fa-star"></span>
+					</div>
+					<div class="info">
+						<h4 class="text-center">Title</h4>
+						<p>hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
+						<a href="" class="btn">Learn more</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="box">
+					<div class="star">
+						<span class="fa fa-2x fa-star"></span>
+						<span class="fa fa-2x fa-star"></span>
+					</div>
+					<div class="info">
+						<h4 class="text-center">Title</h4>
+						<p>hhoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogeoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hoge</p>
+						<a href="" class="btn">Learn more</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="box">
+					<div class="star">
+						<span class="fa fa-2x fa-star"></span>
+					</div>
+					<div class="info">
+						<h4 class="text-center">Title</h4>
+						<p>hoge hoge hoge hoge hoge hoge</p>
+						<a href="" class="btn">Learn more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
