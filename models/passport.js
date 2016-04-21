@@ -31,7 +31,11 @@ passport.use(new TwitterStrategy({
 },
 function(token, tokenSecret, profile, done) {
   users
-    .updateOrInsert(auth.twitter, profile.id, profile.displayName)
+    .updateOrInsert(
+        auth.twitter,
+        profile.id,
+        profile.displayName,
+        profile.photos[0].value.replace('_normal',''))
     .then(function(user) {
       done(null, user);
     })
