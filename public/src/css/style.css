@@ -246,83 +246,6 @@ body {
   }
 }
 
-#fh5co-header {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  padding-top: 50px;
-  z-index: 12;
-}
-@media screen and (max-width: 768px) {
-  #fh5co-header {
-    padding-top: 30px;
-  }
-}
-#fh5co-header #fh5co-logo {
-  text-align: center;
-  display: block;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: -12px;
-  z-index: 1;
-}
-#fh5co-header #fh5co-logo a {
-  font-size: 30px;
-  font-weight: 500;
-  color: white;
-}
-#fh5co-header #fh5co-logo a span {
-  color: #8dc63f;
-}
-#fh5co-header nav {
-  position: relative;
-}
-#fh5co-header nav ul {
-  padding: 0;
-  margin: 0;
-  z-index: 2;
-  position: relative;
-}
-@media screen and (max-width: 768px) {
-  #fh5co-header nav ul {
-    display: none;
-  }
-}
-#fh5co-header nav ul li {
-  display: inline;
-}
-#fh5co-header nav ul li a {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
-}
-#fh5co-header nav ul li a:hover {
-  color: white;
-}
-#fh5co-header nav ul li.fh5co-cta-btn a {
-  position: relative;
-  border-bottom: none;
-  padding: 7px 20px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  border-radius: 7px;
-}
-#fh5co-header nav ul li.fh5co-cta-btn a:hover {
-  border: 2px solid white;
-}
-#fh5co-header nav ul li.active a {
-  color: white;
-}
-#fh5co-header nav ul.left-menu li {
-  margin-right: 30px;
-}
-#fh5co-header nav ul.right-menu li {
-  margin-left: 30px;
-}
-
 #fh5co-hero {
   background-color: transparent;
   background-size: cover;
@@ -342,7 +265,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #2a2d36;
   opacity: .54;
   z-index: 9;
 }

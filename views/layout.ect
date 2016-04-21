@@ -19,28 +19,40 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,600,400italic,700' rel='stylesheet' type='text/css'>
-	
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="../src/css/animate.css">
+  <!-- Flexslider -->
+  <link rel="stylesheet" href="../src/css/flexslider.css">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="../src/css/icomoon.css">
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="../src/css/magnific-popup.css">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="../src/css/bootstrap.css">
+
+  <link rel="stylesheet" href="../src/css/style.css">
+
+<!-- Modernizr JS -->
+<script src="../src/js/modernizr-2.6.2.min.js"></script>
 
 		<% content 'css' %>
 
 	</head>
 
-    <section id="fh5co-header">
-      <div class="container">
-        <nav role="navigation">
-          <ul class="pull-left left-menu">
-            <li><a href="/search">検索</a></li>
-            <li><a href="#fh5co-features-2">サービス説明</a></li>
-          </ul>
-          <h1 id="fh5co-logo"><a href="index.html">KININARU<span>.</span></a></h1>
-          <ul class="pull-right right-menu">
-            <li><a href="#">Login</a></li>
-            <li class="fh5co-cta-btn"><a href="#">Sign up</a></li>
-          </ul>
-        </nav>
+  <div id="headerbg">
+    <div id="header">
+      <!-- ロゴ画像 -->
+      <div id="logo">
+        <img src="/images/logo.png">
       </div>
-    </section>
-	
+
+      <!-- ログインボタン -->
+      <div id="login_button">
+        <button type="button" class="btn btn-primary">login</button>
+      </div>
+    </div>
+  </div>
 		<!-- body部分 -->
 		<div id="Main">
 			<% content %>
@@ -50,7 +62,7 @@
       <div class="container">
         <div class="row row-bottom-padded-sm">
           <div class="col-md-12">
-            <p class="copyright text-center">&copy; 2016 <a href="index.html">KININARU</a>. All Rights Reserved.</p>
+            <p class="copyright text-center">&copy; 2016 <a href="/">KININARU</a>. All Rights Reserved.</p>
           </div>
         </div>
       </div>

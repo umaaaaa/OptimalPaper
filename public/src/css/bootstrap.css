@@ -6559,7 +6559,7 @@ button.close {
 }
 .tooltip.in {
   opacity: 0.9;
-  filter: alpha(opacity=90);
+  filter: alpha(opacity=0);
 }
 .tooltip.top {
   margin-top: -3px;
