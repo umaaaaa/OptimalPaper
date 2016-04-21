@@ -16,7 +16,7 @@
         <div id="custom-search-input">
           <form class="form-search" method="get" id="keyword" action="/">
             <div class="input-group col-md-12">
-              <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value="" />
+              <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value=<%- @keyword %> />
               <span class="input-group-btn">
                 <button class="btn btn-info btn-lg" type="submit">
                   <i class="glyphicon glyphicon-search"></i>
@@ -34,6 +34,7 @@
 
   <div class="searchResult">
     <div class="row">
+<% for paper in @papers : %>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="box">
           <div class="star">
@@ -42,39 +43,13 @@
             <span class="fa fa-2x fa-star"></span>
           </div>
           <div class="info">
-            <h4 class="text-center">Title</h4>
-            <p>hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
+            <h4 class="text-center"><%- paper.title %></h4>
+            <p>hoge</p>
             <a href="" class="btn">Learn more</a>
           </div>
         </div>
       </div>
-
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
-          </div>
-          <div class="info">
-            <h4 class="text-center">Title</h4>
-              <p>hhoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogeoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hoge</p>
-            <a href="" class="btn">Learn more</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-          </div>
-          <div class="info">
-            <h4 class="text-center">Title</h4>
-            <p>hoge hoge hoge hoge hoge hoge</p>
-            <a href="" class="btn">Learn more</a>
-          </div>
-        </div>
-      </div>
+<% end %>
     </div>
   </div>
 
