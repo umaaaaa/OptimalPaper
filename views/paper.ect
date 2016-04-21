@@ -1,0 +1,12 @@
+<% extend 'layout.ect' %>
+<% block 'css' : %>
+<link href="stylesheets/index.css" rel="stylesheet">
+<script src="/javascripts/app.js"></script>
+<% end %>
+
+
+<div class="container">
+  <p><%= @json2str @detail %></p>
+  <p><%= @json2str @reviews %></p>
+  <p><%= @json2str @recommends %></p>
+</div>
