@@ -10,7 +10,7 @@ var db = require('./models/db');
 var passport = require('./models/passport');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
 var auth = require('./routes/auth');
 var search = require('./routes/search');
 var paper = require('./routes/paper');
@@ -39,7 +39,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/user', user);
 app.use('/auth', auth);
 app.use('/search', search);
 app.use('/paper', paper);
