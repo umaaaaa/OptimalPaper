@@ -5,21 +5,19 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
 <div class="container">
-	<div id="profile" class="col-md-3">
-		<img id="picture" src="http://placehold.it/200x200">
-		<div id="detail">
-			<h2> <%= @id %> さん </h2>
-			<ul class="list-group">
-				<li class="list-group-item">サービス登録日：2016/4/1 </li>
-				<li class="list-group-item">読んだ論文数</li>
-				<ul class="lisit-group">
-					<li class="list-group-item">総数：1024 本</li>
-					<li class="list-group-item">月間：10 本</li>
-			</ul>
-		</div>
+	<div id="profile" class="col-md-4">
+		<img name="picture" src="http://placehold.it/200x200">
+		<h2 name="name"> <%= @id %> さん </h2>
+		<ul id="user-detail" >
+			<li ><img src="/images/calendar.png"> サービス登録日：2016/4/1 </li>
+			<li ><img src="/images/paper.png">読んだ論文数</li>
+			<ul >
+				<li >総数：1024 本</li>
+				<li >月間：10 本</li>
+		</ul>
 	</div>
-	<div id="tree" class="col-md-6">
-		<h2><%= @id %>さんの進捗 </h2>
+	<div id="tree" class="col-md-5">
+		<h2><%= @id %>さんの知恵の木 </h2>
 		<img name="max-tree" src="/images/tree.jpg">
 	</div>
 </div>
