@@ -27,20 +27,27 @@
 		<% content 'css' %>
 
 	</head>
-
-  <div id="headerbg">
-    <div id="header">
-      <!-- ロゴ画像 -->
-      <div id="logo">
-        <img src="/images/logo.png">
-      </div>
-
-      <!-- ログインボタン -->
-      <div id="login_button">
-        <button type="button" class="btn btn-primary">login</button>
-      </div>
-    </div>
-  </div>
+	<body ng-controller="OPController">
+		<!-- ヘッダー部分 -->
+		<div id="headerbg">
+			<div id="header">
+				<!-- ロゴ画像 -->
+				<div id="logo">
+					<img src="/images/logo.png">
+				</div>
+				
+				<!-- ログインボタン -->
+				<div id="login_button">
+          <% if @user : %>
+          <div id="username"><%= @user.name %></div>
+          <img id="icon" src="<%= @user.icon_url %>">
+          <% else : %>
+          <button type="button" class="btn btn-primary">login<img id="twitter" src="/images/twitter.png"></button>
+          <% end %>
+				</div>
+			</div>
+		</div>
+	
 		<!-- body部分 -->
 		<div id="Main">
 			<% content %>
