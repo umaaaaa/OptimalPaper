@@ -29,7 +29,12 @@
 				
 				<!-- ログインボタン -->
 				<div id="login_button">
-					<button type="button" class="btn btn-primary">login</button>
+          <% if @user : %>
+          <div id="username"><%= @user.name %></div>
+          <img id="icon" src="<%= @user.icon_url %>">
+          <% else : %>
+          <button type="button" class="btn btn-primary">login<img id="twitter" src="/images/twitter.png"></button>
+          <% end %>
 				</div>
 			</div>
 		</div>

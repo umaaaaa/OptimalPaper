@@ -26,10 +26,25 @@
 }
 
 #login_button {
-	height: 100%;	
 	float:right;
+  margin-right:10px;
 }
 
 #login_button button{
-	line-height:30px ;
+  line-height:30px ;
+  width:100px;
+}
+
+#twitter {
+  width:20px;
+}
+
+#username {
+  margin-top:10px;
+  display:inline-block;
+  color:white;
+}
+
+#icon {
+  width: 35px;
 }
