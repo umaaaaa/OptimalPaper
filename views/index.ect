@@ -35,7 +35,10 @@
   <!-- http://qiita.com/n0bisuke/items/ad5bac66dec3ddc6fdd3 -->
 
   <div class="searchResult">
-	<% include 'paper_template.ect', {star: 3, papers: @papers} %>
-  </div>
-
+		<div class="row">
+			<% for paper in @papers : %>
+				<% include 'paper_template.ect', {paper: paper} %>
+			<% end %>
+		</div>
+	</div>
 </div>
