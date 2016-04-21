@@ -42,7 +42,6 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 
       return reviews.getByPaper(detail.paper_id)
         .then(function(revs) {
-          console.log(revs);
           return {
             detail: detail,
             reviews: revs

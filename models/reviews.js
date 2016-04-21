@@ -5,7 +5,6 @@ var db = require('./db');
 var reviews = {};
 
 reviews.getByPaper = function (paper_id) {
-  console.log(paper_id);
   return new Promise(function(resolve, reject) {
     db.query(
       'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
@@ -14,7 +13,6 @@ reviews.getByPaper = function (paper_id) {
       function(err, rows) {
         if (err) return reject(err);
 
-        console.log('foo');
         resolve(rows.map(function(row){
           return {
             id: row.id,
