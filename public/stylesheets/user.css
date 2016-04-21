@@ -1,0 +1,39 @@
+#profile{
+	margin: 50px;
+	margin-top:100px;
+	display: block;
+	text-align:center;
+}
+
+h2[name="name"]{
+	margin-bottom: 20px;
+}
+
+img[name="picture"] {
+	padding-bottom:20px;
+/*	display:inline-block;*/
+}
+
+#user-detail{
+	list-style:none;
+	text-align:left;
+	margin-left:50px;
+	font-size:15px;
+}
+
+#user-detail > li {
+	margin-bottom:8px;
+}
+
+#user-detail > ul > li {
+	margin-bottom:3px;
+}
+
+#tree {
+	margin:30px;
+}
+
+#progress-tree {
+	width:500px;
+}
+
