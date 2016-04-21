@@ -4,78 +4,237 @@
 <!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <script src="/javascripts/app.js"></script>
+<!-- Animate.css -->
+<link rel="stylesheet" href="../src/css/animate.css">
+<!-- Flexslider -->
+<link rel="stylesheet" href="../src/css/flexslider.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="../src/css/icomoon.css">
+<!-- Magnific Popup -->
+<link rel="stylesheet" href="../src/css/magnific-popup.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="../src/css/bootstrap.css">
+
+<link rel="stylesheet" href="../src/css/style.css">
+
+<!-- Modernizr JS -->
+<script src="../src/js/modernizr-2.6.2.min.js"></script>
+
 <% end %>
 
+  <!-- Loader -->
+  <div class="fh5co-loader"></div>
 
-<div class="container">
-  <!-- 検索フォーム -->
-  <div class="search_form">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>論文検索</h2>
-        <div id="custom-search-input">
-          <form class="form-search" method="get" id="keyword" action="/">
-            <div class="input-group col-md-12">
-              <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value="" />
-              <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="submit">
-                  <i class="glyphicon glyphicon-search"></i>
-                </button>
-              </span>
+  <div id="fh5co-page">
+    <section id="fh5co-header">
+      <div class="container">
+        <nav role="navigation">
+          <ul class="pull-left left-menu">
+            <li><a href="about.html">About</a></li>
+            <li><a href="tour.html">Tour</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+          <h1 id="fh5co-logo"><a href="index.html">KININARU<span>.</span></a></h1>
+          <ul class="pull-right right-menu">
+            <li><a href="#">Login</a></li>
+            <li class="fh5co-cta-btn"><a href="#">Sign up</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <!-- #fh5co-header -->
+
+    <section id="fh5co-hero" class="js-fullheight" style="background-image: url(../src/images/hero_bg.jpg);" data-next="yes">
+      <div class="fh5co-overlay"></div>
+      <div class="container">
+        <div class="fh5co-intro js-fullheight">
+          <div class="fh5co-intro-text">
+            <!-- 
+              INFO:
+              Change the class to 'fh5co-right-position' or 'fh5co-center-position' to change the layout position
+              Example:
+              <div class="fh5co-right-position">
+            -->
+            <div class="fh5co-left-position">
+              <h2 class="animate-box">論文まじ最高かよ</h2>
+              <div id="custom-search-input">
+                <form class="form-search animate-box" method="get" id="keyword" action="/">
+                  <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value="" />
+                    <span class="input-group-btn">
+                      <button class="btn btn-info btn-lg" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FIXME:サーバサイドから渡ってくる名前等が決まったら、if文、for文を書く -->
-  <!-- http://qiita.com/n0bisuke/items/ad5bac66dec3ddc6fdd3 -->
-
-  <div class="searchResult">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
-          </div>
-          <div class="info">
-            <h4 class="text-center">Title</h4>
-            <p>hoge hoge hoge hoge hoge hoge hoge hoge hoge</p>
-            <a href="" class="btn">Learn more</a>
+              </div>
           </div>
         </div>
-      </div>
+        <div class="fh5co-learn-more animate-box">
+          <a href="#" class="scroll-btn">
+            <!-- <span class="text">サービスを詳しく知る</span> -->
+            <span class="arrow"><i class="icon-chevron-down"></i></span>
+          </a>
+        </div>
+    </section>
+    <!-- END #fh5co-hero -->
 
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
+
+    <section id="fh5co-projects">
+      <div class="container">
+        <div class="row row-bottom-padded-md">
+          <div class="col-md-6 col-md-offset-3 text-center">
+            <h2 class="fh5co-lead animate-box">最近読まれた論文</h2>
+            <p class="fh5co-sub-lead animate-box">評価高くてまじオススメ</p>
           </div>
-          <div class="info">
-            <h4 class="text-center">Title</h4>
-              <p>hhoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogeoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hogehoge hoge hoge hoge hoge hoge</p>
-            <a href="" class="btn">Learn more</a>
+        </div>
+        <div class="row">
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_1.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_1.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>Beautiful Sunrise</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_2.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_2.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>Cute Little Dog</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_3.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_3.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>A Wooden Bridge</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_4.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_4.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>Puppy & I in the Farm</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_5.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_5.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>A Big Wave of the Blue Sea</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
+            <a href="images/img_6.jpg" class="fh5co-project-item image-popup">
+              <img src="images/img_6.jpg" alt="Image" class="img-responsive">
+              <div class="fh5co-text">
+                <h2>Foggy Pine Trees</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+              </div>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+    <!-- END #fh5co-projects -->
+
+
+    <section id="fh5co-features-2">
+      <div class="container">
+        <div class="col-md-6 col-md-push-6">
+          <figure class="fh5co-feature-image animate-box">
+            <img src="../src/images/macbook.png" alt="Free HTML5 Bootstrap Template by FREEHTML5.co">
+          </figure>
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+          <span class="fh5co-label animate-box">サービス説明</span>
+          <h2 class="fh5co-lead animate-box">KININARUとは？</h2>
+          <div class="fh5co-feature">
+            <div class="fh5co-icon animate-box"><i class="icon-check2"></i></div>
+            <div class="fh5co-text animate-box">
+              <h3>あなたに合った論文を見つけます</h3>
+              <p>最適論文</p>
+            </div>
+          </div>
+          <div class="fh5co-feature">
+            <div class="fh5co-icon animate-box"><i class="icon-check2"></i></div>
+            <div class="fh5co-text animate-box">
+              <h3>木を育てましょう</h3>
+              <p>まじモチベ上がるから👆 </p>
+            </div>
+          </div>
+          <div class="fh5co-feature">
+            <div class="fh5co-icon animate-box"><i class="icon-check2"></i></div>
+            <div class="fh5co-text animate-box">
+              <h3>リコメンド</h3>
+              <p>おすすめ論文、教えるからな</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
+    <!-- END #fh5co-features-2 -->
 
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-          </div>
-          <div class="info">
-            <h4 class="text-center">Title</h4>
-            <p>hoge hoge hoge hoge hoge hoge</p>
-            <a href="" class="btn">Learn more</a>
+    <footer id="fh5co-footer" role="contentinfo">
+      <div class="container">
+        <div class="row row-bottom-padded-sm">
+          <div class="col-md-12">
+            <p class="copyright text-center">&copy; 2016 <a href="index.html">KININARU</a>. All Rights Reserved.</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </footer>
+    <!-- END #fh5co-footer -->
+      </div>
+      <!-- END #fh5co-page -->
 
-</div>
+      <!-- jQuery -->
+      <script src="../src/js/jquery.min.js"></script>
+      <!-- jQuery Easing -->
+      <script src="../src/js/jquery.easing.1.3.js"></script>
+      <!-- Bootstrap -->
+      <script src="../src/js/bootstrap.min.js"></script>
+      <!-- Main JS (Do not remove) -->
+      <script src="../src/js/main.js"></script>
+
+      <script>
+$(function(){
+
+  if ( $.cookie('layoutCookie') != '' ) {
+    $('body').addClass($.cookie('layoutCookie'));
+  }
+
+  $('a[data-layout="boxed"]').click(function(event){
+    event.preventDefault();
+    $.cookie('layoutCookie', 'boxed', { expires: 7, path: '/'});
+    $('body').addClass($.cookie('layoutCookie')); // the value is boxed.
+  });
+
+  $('a[data-layout="wide"]').click(function(event){
+    event.preventDefault();
+    $('body').removeClass($.cookie('layoutCookie')); // the value is boxed.
+    $.removeCookie('layoutCookie', { path: '/' }); // remove the value of our cookie 'layoutCookie'
+  });
+});
+      </script>
