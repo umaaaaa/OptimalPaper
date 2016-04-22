@@ -73,6 +73,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 
 papers.getRecent = function (count) {
   //count回cinii APIを呼ぶので制限
+  //TODO:ほんとはちゃんとDBかキャッシュに持つ
   var limited_count = Math.max(count, 10);
 
   return reviews.getRecent(limited_count)

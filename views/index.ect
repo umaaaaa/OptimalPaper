@@ -66,6 +66,9 @@
         </div>
         <div class="row">
 
+<% for ov in @overviews: %>
+  <% include 'paper_template.ect', { overview: ov} %>
+<% end %>
           <div class="col-md-4 col-sm-6 col-xxs-12 animate-box">
               <div class="fh5co-text">
                 <h2>Beautiful Sunrise</h2>
