@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS user(
   name NVARCHAR(64) NOT NULL,
   icon_url NVARCHAR(512) NOT NULL,
   registered_at DATETIME NOT NULL,
+  UNIQUE(auth, id_auth),
   PRIMARY KEY(id)
 );
 
@@ -16,6 +17,7 @@ CREATE TABLE IF NOT EXISTS paper(
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   repo TINYINT NOT NULL,
   id_repo BIGINT UNSIGNED NOT NULL,
+  UNIQUE(repo, id_repo),
   PRIMARY KEY(id)
 );
 
@@ -26,8 +28,8 @@ CREATE TABLE IF NOT EXISTS review(
   rate TINYINT,
   comment TEXT,
   reviewed_at DATETIME NOT NULL,
+  UNIQUE(user_id, paper_id),
   PRIMARY KEY(id),
   FOREIGN KEY (user_id) REFERENCES user(id),
   FOREIGN KEY (paper_id) REFERENCES paper(id)
 );
-
