@@ -1,0 +1,19 @@
+<!-- <link href="/stylesheets/review_template.css" rel="stylesheet"> と、
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+を読み込んでおく-->
+
+
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	<div class="review-box">
+		<div class="review-star">
+			<% for star in [1..@paper.review.rate] : %>
+			<span class="fa fa-2x fa-star"></span>
+			<% end %>
+		</div>
+		<div class="review-info">
+			<p><%- @paper.review.user.name %></p>
+      <p><%- @paper.review.comment %></p>
+		</div>
+	</div>
+</div>
+

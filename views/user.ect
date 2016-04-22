@@ -2,6 +2,7 @@
 <% block 'css' : %>
 <link href="/stylesheets/user.css" rel="stylesheet">
 <link href="/stylesheets/paper_template.css" rel="stylesheet">
+<link href="/stylesheets/review_template.css" rel="stylesheet">
 <!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
@@ -28,6 +29,7 @@
 		<div class="row">
        <% for paper in @papers : %>
         <% include 'paper_template.ect',{paper:paper} %>
+        <% include 'review_template.ect', {paper: paper} %>
        <% end %>
 		</div>
 	</div>
