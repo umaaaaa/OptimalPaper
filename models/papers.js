@@ -126,6 +126,10 @@ papers.getRecent = function (count) {
     });
 }
 
+papers.getOptimal = function(count, user) {
+  return Promise.resolve([]);
+};
+
 papers.search = function(keyword, orderby, user) {
   return cinii.searchOrderByCited(keyword)
     .then(function(ps){

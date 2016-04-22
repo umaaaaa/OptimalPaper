@@ -14,11 +14,11 @@ reviews.insert = function (repo, id_repo, rate, comment, user) {
         db.query(
           'insert into review set ?',
           {
-            user_id = user.user_id,
-            paper_id = paper_id,
-            rate = rate,
-            comment = comment,
-            reviewed_at = now
+            user_id: user.user_id,
+            paper_id: paper_id,
+            rate: rate,
+            comment: comment,
+            reviewed_at: now
           },
           function(err, res) {
             if (err) return reject(err);
