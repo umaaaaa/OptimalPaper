@@ -30,6 +30,34 @@ reviews.getByPaper = function (paper_id) {
   });
 };
 
+reviews.getByPaper = function (paper_id) {
+  return new Promise(function(resolve, reject) {
+    db.query(
+      'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
+      'from review join user on user.id=user_id where paper_id=? '+
+      'order by reviewed_at desc limit 1',
+      [paper_id],
+      function(err, rows) {
+        if (err) return reject(err);
+        if (rows.length != 1) return reject(new Error('Not exist'));
+
+        var row = rows[0];
+        resolve({
+          id: row.id,
+          paper_id: row.paper_id,
+          rate: row.rate,
+          comment: row.rate,
+          reviewed_at: row.reviewed_at,
+          user: {
+            id: row.user_id,
+            name: row.name,
+            icon_url: row.icon_url }
+        });
+      });
+  });
+};
+
+
 reviews.getByUserId = function (id) {
 };
 

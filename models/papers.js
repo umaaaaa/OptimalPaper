@@ -102,20 +102,33 @@ papers.getRecent = function (count) {
 
 papers.search = function(keyword, orderby, user) {
   return cinii.searchOrderByCited(keyword)
-    .then(function(items){
-      return Promise.all(
-        items.map(function(item) {
-          return recommends.factor(item.repo, item.id_repo, orderby, user)
-            .then(function(factor) {
-              return {
-                item: item,
-                factor: factor
-              };
-            });
-          }));
+    .then(function(ps){
+      var overviews = ps.map(function(paper) {
+        return papers.getPaperId(paper.repo, paper.id_repo)
+          .then(function(paper_id){
+            if (!paper_id) return { paper: paper };
+
+            paper.paper_id = paper_id;
+            return reviews.getRecentByPaper(paper_id)
+              then(function(review){
+                return { paper: paper, review: review };
+              });
+          });
+      });
+      return Promise.all(overviews);
     })
-    .then(function (factored_items) {
-      return factored_items.sort(function(a,b) {
+    .then(function(overviews){
+      var factored_overviews = overviews.map(function(ov) {
+        return recommends.factor(ov.paper.repo, ov.paper.id_repo, orderby, user)
+          .then(function(factor) {
+            ov.factor = factor;
+            return ov;
+          });
+      });
+      return Promise.all(factored_overviews);
+    })
+    .then(function (factored_overviews) {
+      return factored_overviews.sort(function(a,b) {
         return a.factor - b.factor;
       });
     });
