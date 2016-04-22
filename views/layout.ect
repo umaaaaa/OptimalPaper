@@ -39,10 +39,12 @@
 				<!-- ログインボタン -->
 				<div id="login_button">
           <% if @user : %>
-          <div id="username"><%= @user.name %></div>
-          <img id="icon" src="<%= @user.icon_url %>">
+          <a href="/user/1">
+            <div id="username"><%= @user.name %></div>
+            <img id="icon" src="<%= @user.icon_url %>">
+          </a>
           <% else : %>
-          <button type="button" class="btn btn-primary">login<img id="twitter" src="/images/twitter.png"></button>
+          <button type="button" class="btn btn-primary" onclick="location.href='/auth/twitter'">login<img id="twitter" src="/images/twitter.png"></button>
           <% end %>
 				</div>
 			</div>

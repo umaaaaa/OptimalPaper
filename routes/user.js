@@ -8,8 +8,7 @@ var users = require('../models/users');
 router.get('/:id', function(req, res, next) {
   users.getById(req.params.id)
     .then(function(us) {
-      console.log("認証ずみ！！！！");
-      res.render('user', {type: 'optimal', users: us});
+      res.render('user', {type: 'optimal', users: us, papers: papers, user:req.user});
     })
     .catch(next);
 });
