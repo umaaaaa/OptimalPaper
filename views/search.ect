@@ -32,21 +32,8 @@
 
   <div class="searchResult">
     <div class="row">
-<% for paper in @papers : %>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="box">
-          <div class="star">
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
-            <span class="fa fa-2x fa-star"></span>
-          </div>
-          <div class="info">
-            <h4 class="text-center"><%- paper.title %></h4>
-            <p>hoge</p>
-            <a href="" class="btn">Learn more</a>
-          </div>
-        </div>
-      </div>
+<% for ov in @overviews : %>
+  <% include 'paper_template.ect', {overview: ov} %>
 <% end %>
     </div>
   </div>
