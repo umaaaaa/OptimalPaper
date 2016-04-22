@@ -7,31 +7,39 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
 <div class="container">
-	<div id="profile" class="col-md-4">
-		<img name="picture" src="http://placehold.it/200x200">
-		<h2 name="name"> <%= @id %> さん </h2>
-		<ul id="user-detail" >
-			<li ><img src="/images/calendar.png"> サービス登録日：2016/4/1 </li>
-			<li ><img src="/images/paper.png">読んだ論文数</li>
-			<ul >
-				<li >総数：1024 本</li>
-				<li >月間：10 本</li>
-		</ul>
-	</div>
-	<div id="tree" class="col-md-5">
-		<h2><%= @id %>さんの知恵の木 </h2>
-		<img id="progress-tree" src="/images/tree-max.gif">
-	</div>
+  <div id="profile" class="col-md-4">
+    <img name="picture" src=<%= @user.icon_url %> style="width: 200px">
+    <h2 name="name"> <%= @user.name %> さん </h2>
+    <ul id="user-detail" >
+      <li ><img src="/images/calendar.png"> サービス登録日：2016/4/1 </li>
+<li ><img src="/images/paper.png">読んだ論文数</li>
+      <ul >
+        <li >総数：1024 本</li>
+        <li >月間：10 本</li>
+      </ul>
+  </div>
+      <div id="tree" class="col-md-5">
+        <h2><%= @user.name %>さんのキニナル木 </h2>
+        <img id="progress-tree" src="/images/tree-max.gif">
+      </div>
 </div>
 <div class="container">
-	<h1>読んだ論文</h1>
-	<div class="paper">
-		<div class="row">
-       <% for paper in @papers : %>
-        <% include 'paper_template.ect',{paper:paper} %>
-        <% include 'review_template.ect', {paper: paper} %>
-       <% end %>
-		</div>
-	</div>
-
+  <h1>読んだ論文</h1>
+  <div class="paper">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="box">
+        <div class="star">
+          <span class="fa fa-2x fa-star"></span>
+          <span class="fa fa-2x fa-star"></span>
+          <span class="fa fa-2x fa-star"></span>
+        </div>
+        <div class="info">
+          <h4 class="text-center">位置情報ゲームによる地域活性化の可能性</h4>
+          <p>概要</p>
+          <a href="/paper/naid/40020770711" class="btn">Learn more</a>
+        </div>
+      </div>
+      </div> 
+    </div>
+  </div>
 </div>
