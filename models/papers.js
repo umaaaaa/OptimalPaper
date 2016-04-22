@@ -70,9 +70,19 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 
       return reviews.getByPaper(detail.paper_id)
         .then(function(revs) {
+          if (user) {
+            var  myrev = revs.find(function(rev) {
+              return rev.user.id == user.id;
+            });
+            revs = revs.filter(function(rev) {
+              return rev.user.id != user.id;
+            });
+          };
+
           return {
             detail: detail,
-            reviews: revs
+            reviews: revs,
+            my_review: myrevi
           };
         });
     })
