@@ -13,27 +13,21 @@ router.get('/', function(req, res, next) {
           (  orderby=='recent'
           || orderby=='optimal'
           || orderby=='rating'))) return res.redirect('/');
-
-    papers.searchWithUser(keyword, orderby, req.user)
-      .then(function(ps) {
-        res.render('search',
-            {keyword: keyword, orderby: orderby, papers: ps, user: req.user});
-      })
-      .catch(next);
   }
   else {
     //認証なし
     if(!(keyword &&
           (orderby=='recent'
           || orderby=='rating'))) return res.redirect('/');
-
-    papers.search(keyword, orderby)
-      .then(function(ps) {
-        res.render('search',
-            {keyword: keyword, orderby: orderby, papers: ps});
-      })
-      .catch(next);
   }
+
+
+  papers.search(keyword, orderby, req.user)
+    .then(function(ovs) {
+      res.render('search',
+        {keyword: keyword, orderby: orderby, overviews: ovs, user: req.user});
+    })
+    .catch(next);
 });
 
 module.exports = router;
