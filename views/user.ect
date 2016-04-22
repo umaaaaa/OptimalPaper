@@ -29,7 +29,6 @@
 		<div class="row">
        <% for paper in @papers : %>
         <% include 'paper_template.ect',{paper:paper} %>
-        <% include 'review_template.ect', {paper: paper} %>
        <% end %>
 		</div>
 	</div>

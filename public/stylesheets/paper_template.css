@@ -5,7 +5,6 @@
 	text-align: right;
 	display: block;
 	margin-top: 60px;
-	height: 500px;
 }
 .star {
 	background-color: #57a544;
@@ -13,7 +12,6 @@
 	display: table;
 	height: 100px;
 	margin: 0 auto;
-	width: 100px;
 	margin-top: -61px;
 }
 .star span {
@@ -29,7 +27,6 @@
 .info > p {
 	color: #717171;
 	font-size: 16px;
-	height: 320px;
 	padding-top: 10px;
 	text-align: justify;
 	overflow: scroll;
