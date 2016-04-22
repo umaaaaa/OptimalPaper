@@ -1,6 +1,13 @@
-<% block 'css' : >
-<link href="/stylesheets/paper_template.css" rel="stylesheet">
+<% extend 'layout.ect' %>
+<% block 'css' : %>
+<link href="stylesheets/index.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="/javascripts/app.js"></script>
 <% end %>
 
 
+<div class="container">
+  <p><%= @json2str @detail %></p>
+  <p><%= @json2str @reviews %></p>
+  <p><%= @json2str @recommends %></p>
+</div>
