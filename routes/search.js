@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
           || orderby=='optimal'
           || orderby=='rating'))) return res.redirect('/');
 
-    papers.searchWithUser(keyword, orderby, req.user)
+    papers.search(keyword, orderby, req.user)
       .then(function(ps) {
         res.render('search',
             {keyword: keyword, orderby: orderby, papers: ps, user: req.user});
