@@ -10,6 +10,7 @@ router.get('/naid/:id', function(req, res, next) {
   papers.fetchDetailWithRecommend(cinii, naid, req.user)
     .then(function(detail){
       detail.json2str = JSON.stringify; //for develop
+      detail.user = req.user;
       res.render('paper', detail);
     })
     .catch(next);
