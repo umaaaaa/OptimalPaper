@@ -33,7 +33,8 @@ reviews.getByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(
       'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
-      'from review join user on user.id=user_id where paper_id=?',
+      'from review join user on user.id=user_id where paper_id=? '+
+      'order by reviewed_at desc',
       [paper_id],
       function(err, rows) {
         if (err) return reject(err);
@@ -55,7 +56,7 @@ reviews.getByPaper = function (paper_id) {
   });
 };
 
-reviews.getByPaper = function (paper_id) {
+reviews.getRecentByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(
       'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
