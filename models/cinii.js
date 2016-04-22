@@ -4,6 +4,9 @@ var db = require('./db');
 
 var cinii = {};
 
+//cinii
+var repo = 1;
+
 cinii.fetchDetailByNaid = function (naid) {
   return agent
       .get('http://ci.nii.ac.jp/naid/' + naid + '.json')
@@ -31,7 +34,8 @@ cinii.fetchDetailByNaid = function (naid) {
           citedBy: paper['cinii:citedBy'],
           description: paper['dc:description']
             && paper['dc:description'][0]['@value'],
-          id_repo: naid
+          id_repo: naid,
+          repo: repo
         };
       });
 };
@@ -101,7 +105,8 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
             page: {start: paper['prism:startingPage'], end: paper['prism:endingPage']},
             date: paper['prism:publicationDate'] },
           description: paper['description'],
-          id_repo: Number(paper['@id'].split('/').pop())
+          id_repo: Number(paper['@id'].split('/').pop()),
+          repo: repo
         };
       });
     });
