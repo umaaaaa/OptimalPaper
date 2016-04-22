@@ -53,12 +53,12 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
       format: 'json',
       q: keyword,
       sortorder: citedBy,
-      count: Math.min(max_per_request, max)
+      count: Math.min(max_per_req, max)
     })
     .then(function (response) {
       var first_res = response.body['@graph'][0];
       var total = first_res['opensearch:totalResult'];
-      if (max<=max_per_request || total<=max_per_request)
+      if (max<=max_per_req || total<=max_per_req)
         return first_res.items;
 
       var starts = [];
@@ -85,15 +85,15 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
         .then(function(results) {
           //最初に取得した結果とそれ以降の結果を一つの配列にする
           return Array.prototype.concat.apply(first_res.items,
-            ress
+            results
               .sort(function(a,b){return a.start-b.start;})
               .map(function(result){return result.partial_res.items;}));
         });
     })
-    .then(function(items){
-      return items.map(function(paper){
+    .then(function(papers){
+      return papers.map(function(paper){
         return {
-          title: item['title'],
+          title: paper['title'],
           creators: paper['dc:creator']
             && paper['dc:creator'].map(function(n){return n['@value'];}),
           publish_info: {
