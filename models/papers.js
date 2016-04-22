@@ -102,15 +102,21 @@ papers.getRecent = function (count) {
 papers.search = function(keyword, orderby, user) {
   return cinii.searchOrderByCited(keyword)
     .then(function(items){
-      return items.map(function(item) {
-        return {
-          item: item,
-          factor: recommends.factor(orderby, user)
-        };
-      })
-      .sort(function(a,b) {
+      return Promise.all(
+        items.map(function(item) {
+          return recommends.factor(item.repo, item.id_repo, orderby, user)
+            .then(function(factor) {
+              return {
+                item: item,
+                factor: factor
+              };
+            });
+          }));
+    })
+    .then(function (factored_items) {
+      return factored_items.sort(function(a,b) {
         return a.factor - b.factor;
-      })
+      });
     });
 }
 
