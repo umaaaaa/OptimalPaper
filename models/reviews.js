@@ -4,6 +4,31 @@ var db = require('./db');
 
 var reviews = {};
 
+reviews.insert = function (repo, id_repo, rate, comment, user) {
+  if (user) return Promise.reject(new Error('Need login'));
+
+  return papers.getOrSet(repo, id_repo)
+    .then(function(paper_id) {
+      return new Promise(function(resolve, reject) {
+        var now = new Date();
+        db.query(
+          'insert into review set ?',
+          {
+            user_id = user.user_id,
+            paper_id = paper_id,
+            rate = rate,
+            comment = comment,
+            reviewed_at = now
+          },
+          function(err, res) {
+            if (err) return reject(err);
+            resolve(res.insertId);
+          });
+      });
+    });
+};
+
+
 reviews.getByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(

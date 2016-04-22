@@ -9,6 +9,22 @@ var papers = {};
 
 var repos = { cinii: 1 }
 
+papers.getOrSet = function (repo, id_repo) {
+  return papers.getPaperId(repo, id_repo)
+    .then(function(papers_id) {
+      if (paper_id) return paper_id;
+
+      return new Promise(function(resolve, reject) {
+        db.query('insert into paper set ?',
+          { repo:repo, id_repo:id_repo },
+          function(err, res) {
+            if (err) return reject(err);
+            resolve(res.insertId);
+          });
+      });
+    });
+};
+
 papers.getPaperId = function (repo, id_repo) {
   return new Promise(function(resolve, reject) {
     db.query('select id from paper where repo=? and id_repo=?',
