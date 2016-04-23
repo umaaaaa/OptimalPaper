@@ -57,7 +57,8 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
     })
     .then(function (response) {
       var first_res = response.body['@graph'][0];
-      var total = first_res['opensearch:totalResult'];
+      var total = first_res['opensearch:totalResults'];
+
       if (max<=max_per_req || total<=max_per_req)
         return first_res.items;
 
@@ -91,6 +92,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
         });
     })
     .then(function(papers){
+      if (!papers) return [];
       return papers.map(function(paper){
         return {
           title: paper['title'],
