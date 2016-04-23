@@ -98,7 +98,7 @@ reviews.getRecentByPaper = function (paper_id) {
           id: row.id,
           paper_id: row.paper_id,
           rate: row.rate,
-          comment: row.rate,
+          comment: row.comment,
           reviewed_at: row.reviewed_at,
           user: {
             id: row.user_id,
@@ -126,7 +126,7 @@ reviews.getRecent = function (count) {
               id: row.id,
               paper_id: row.paper_id,
               rate: row.rate,
-              comment: row.rate,
+              comment: row.comment,
               reviewed_at: row.reviewed_at,
               user: {
                 id: row.user_id,
