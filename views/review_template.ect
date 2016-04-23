@@ -4,6 +4,9 @@
     <% for star in [1..@paper.review.rate] : %>
     <span class="fa fa-2x fa-star"></span>
     <% end %>
+    <% for star in [1..5-@paper.review.rate] : %>
+    <span class="fa fa-2x fa-star-o"></span>
+    <% end %>
   </div>
     <div class="review-user">
       <p><%- @paper.review.user.name %></p>

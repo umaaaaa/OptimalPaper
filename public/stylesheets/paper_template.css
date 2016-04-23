@@ -10,9 +10,10 @@
 	background-color: #57a544;
 	border-radius: 50%;
 	display: table;
-	height: 100px;
 	margin: 0 auto;
-	margin-top: -61px;
+	margin-top: -75px;
+  width:130px;
+  height:130px;
 }
 .star span {
 	color: #fff;
