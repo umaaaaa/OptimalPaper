@@ -40,8 +40,11 @@
 	color: #717171;
 	font-size: 12px;
 	text-align: justify;
-	overflow: scroll;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 14;
+}
+.description > p {
+	color: #717171;
+	font-size: 12px;
+	text-align: justify;
+  border-top: 1px solid #d4e084;
+  padding-top: 10px;
 }
