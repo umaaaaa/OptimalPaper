@@ -1,12 +1,14 @@
 <div class="box-container">
   <div class="box">
     <div class="star">
+      <% if @overview.rate? : %>
       <% for star in [1..5] : %>
         <% if star <= @overview.rate : %>
           <span class="fa fa-2x fa-star"></span>
          <% else : %>
          <span class="fa fa-2x fa-star-o"></span>
         <% end %>
+      <% end %>
       <% end %>
     </div>
     <div class="info">
