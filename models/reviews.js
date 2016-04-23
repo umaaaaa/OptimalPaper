@@ -15,7 +15,7 @@ reviews.insert = function (repo, id_repo, rate, comment, user) {
         db.query(
           'insert into review set ?',
           {
-            user_id: user.user_id,
+            user_id: user.id,
             paper_id: paper_id,
             rate: rate,
             comment: comment,
@@ -45,7 +45,7 @@ reviews.getByPaper = function (paper_id) {
             id: row.id,
             paper_id: row.paper_id,
             rate: row.rate,
-            comment: row.rate,
+            comment: row.comment,
             reviewed_at: row.reviewed_at,
             user: {
               id: row.user_id,
@@ -66,7 +66,7 @@ reviews.getRecentByPaper = function (paper_id) {
       [paper_id],
       function(err, rows) {
         if (err) return reject(err);
-        if (rows.length != 1) return reject(new Error('Not exist'));
+        if (rows.length != 1) return resolve(null);
 
         var row = rows[0];
         resolve({

@@ -11,7 +11,7 @@ var repos = { cinii: 1 }
 
 papers.getOrSet = function (repo, id_repo) {
   return papers.getPaperId(repo, id_repo)
-    .then(function(papers_id) {
+    .then(function(paper_id) {
       if (paper_id) return paper_id;
 
       return new Promise(function(resolve, reject) {
@@ -70,8 +70,9 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 
       return reviews.getByPaper(detail.paper_id)
         .then(function(revs) {
+          var myrev;
           if (user) {
-            var  myrev = revs.find(function(rev) {
+            myrev = revs.find(function(rev) {
               return rev.user.id == user.id;
             });
             revs = revs.filter(function(rev) {
@@ -82,7 +83,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
           return {
             detail: detail,
             reviews: revs,
-            my_review: myrevi
+            my_review: myrev
           };
         });
     })
@@ -140,7 +141,7 @@ papers.search = function(keyword, orderby, user) {
 
             paper.paper_id = paper_id;
             return reviews.getRecentByPaper(paper_id)
-              then(function(review){
+              .then(function(review){
                 return { paper: paper, review: review };
               });
           });
