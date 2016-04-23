@@ -169,7 +169,7 @@ papers.search = function(keyword, orderby, user) {
     })
     .then(function(overviews){
       var factored_overviews = overviews.map(function(ov) {
-        return recommends.factor(ov.paper.repo, ov.paper.id_repo, orderby, user)
+        return recommends.factor(ov.paper_id, orderby, user)
           .then(function(factor) {
             ov.factor = factor;
             return ov;
