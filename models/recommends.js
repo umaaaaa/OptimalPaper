@@ -11,7 +11,7 @@ function rating(paper_id) {
 }
 
 function recent(paper_id) {
-  return Promise.reject(new Erro('実装されてない'));
+  return Promise.reject(new Error('実装されてない'));
 }
 
 function optimal(paper_id, user) {
