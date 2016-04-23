@@ -16,7 +16,11 @@
         <h4 class="text-center"><%- @overview.paper.title %></h4>
       </a>
       <p><%- @overview.paper.creators %></p>
-      <p class="description"><%- @overview.paper.description %></p>
+      <% if @overview.paper.description? : %>
+      <div class="description">
+        <p><%- @overview.paper.description %></p>
+      </div>
+      <% end %>
       <%###
         @overview:{
           rate, //レーティング(あれば)
