@@ -16,6 +16,50 @@ users.getById = function (id) {
   });
 };
 
+users.getCountOfReviews = function(id) {
+  return db.queryPromise(
+      'select count(*) as count from review where user_id = ?',
+      [id])
+    .then(function(rows) {
+      if (rows.length != 1) throw new Error('count err');
+      return rows[0].count;
+    });
+};
+
+users.getCountOfReviewsRecentDay = function(id, days) {
+  var limit = new Date();
+  limit.setDate(limit.getDate() - days);
+  return db.queryPromise(
+      'select count(*) as count from review '+
+      'where user_id=? and reviewed_at>?',
+      [id, limit])
+    .then(function(rows) {
+      if (rows.length != 1) throw new Error('count err');
+      return rows[0].count;
+    });
+};
+
+//キニナル木の段階数への変換
+function grade(count) {
+  return Math.max(Math.floor((count+1) / 2 ), 5);
+}
+
+users.getByIdMore = function (id) {
+  return users.getById(id)
+    .then(function(user) {
+      return users.getCountOfReviews(id)
+        .then(function(count) {
+          return users.getCountOfReviewsRecentDay(100)
+            .then(function(recent_count) {
+              user.all_reviews = count;
+              user.day100_reviews = recent_count;
+              user.grade = grade(recent_count);
+              return user;
+            });
+        });
+    });
+};
+
 users.getByAuthId = function (auth, id_auth) {
   return new Promise(function(resolve, reject) {
     db.query('select * from user where auth = ? and id_auth = ?',

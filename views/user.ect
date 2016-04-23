@@ -9,20 +9,21 @@
 <div class="container">
   <div id="profile" class="col-md-4">
     <img name="picture" src="http://placehold.it/200x200">
-    <h2 name="name"> <%= @id %> さん </h2>
+    <h2 name="name"> <%= @info.user.name %> さん </h2>
     <ul id="user-detail" >
       <li><img src="/images/calendar.png"> サービス登録日：2016/4/1 </li>
       <li><img src="/images/paper.png">読んだ論文数</li>
       <li>
         <ul>
-          <li>総数：1024 本</li>
-          <li>月間：10 本</li>
+          <li>総数：<%= @info.user.all_reviews %> 本</li>
+          <li>最近100日：<%= @info.user.day100_reviews %> 本</li>
         </ul>
       </li>
     </ul>
   </div>
   <div id="tree" class="col-md-5">
-    <h2><%= @id %>さんの知恵の木 </h2>
+    <h2><%= @info.user.name %>さんの知恵の木 </h2>
+    <p>Grade(0~5): <%= @info.user.grade %></p>
     <img id="progress-tree" src="/images/tree-max.gif">
   </div>
 </div>
@@ -30,7 +31,7 @@
   <h1>読んだ論文</h1>
   <div class="paper">
     <div class="row">
-      <% for ov in @overviews : %>
+      <% for ov in @info.overviews : %>
         <% include 'paper_template.ect', {overview: ov} %>
       <% end %>
     </div>
