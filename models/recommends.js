@@ -7,7 +7,7 @@ var reviews = require('./reviews');
 var recommends = {};
 
 function rating(paper_id) {
-  return reviews.getAvgRateByPaper(id);
+  return reviews.getAvgRateByPaper(paper_id);
 }
 
 function recent(paper_id) {
