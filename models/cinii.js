@@ -7,9 +7,13 @@ var cinii = {};
 //cinii
 var repo = 1;
 
+//cinii appid
+var appid = process.env.CINII_APPID;
+
 cinii.fetchDetailByNaid = function (naid) {
   return agent
       .get('http://ci.nii.ac.jp/naid/' + naid + '.json')
+      .query({appid:appid})
       .then(function (response) {
         var paper = response.body['@graph'][0];
         return {
@@ -50,6 +54,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
   return agent
     .get(endpoint)
     .query({
+      appid: appid,
       format: 'json',
       q: keyword,
       sortorder: citedBy,
