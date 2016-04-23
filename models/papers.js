@@ -1,13 +1,29 @@
 "use strict";
 
+var papers = module.exports = {};
+
 var db = require('./db');
 var cinii = require('./cinii');
 var reviews = require('./reviews');
 var recommends = require('./recommends');
 
-var papers = {};
-
 var repos = { cinii: 1 }
+
+papers.getOrSet = function (repo, id_repo) {
+  return papers.getPaperId(repo, id_repo)
+    .then(function(paper_id) {
+      if (paper_id) return paper_id;
+
+      return new Promise(function(resolve, reject) {
+        db.query('insert into paper set ?',
+          { repo:repo, id_repo:id_repo },
+          function(err, res) {
+            if (err) return reject(err);
+            resolve(res.insertId);
+          });
+      });
+    });
+};
 
 papers.getPaperId = function (repo, id_repo) {
   return new Promise(function(resolve, reject) {
@@ -54,9 +70,20 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 
       return reviews.getByPaper(detail.paper_id)
         .then(function(revs) {
+          var myrev;
+          if (user) {
+            myrev = revs.find(function(rev) {
+              return rev.user.id == user.id;
+            });
+            revs = revs.filter(function(rev) {
+              return rev.user.id != user.id;
+            });
+          };
+
           return {
             detail: detail,
-            reviews: revs
+            reviews: revs,
+            my_review: myrev
           };
         });
     })
@@ -100,6 +127,10 @@ papers.getRecent = function (count) {
     });
 }
 
+papers.getOptimal = function(count, user) {
+  return Promise.resolve([]);
+};
+
 papers.search = function(keyword, orderby, user) {
   return cinii.searchOrderByCited(keyword)
     .then(function(ps){
@@ -110,7 +141,7 @@ papers.search = function(keyword, orderby, user) {
 
             paper.paper_id = paper_id;
             return reviews.getRecentByPaper(paper_id)
-              then(function(review){
+              .then(function(review){
                 return { paper: paper, review: review };
               });
           });
@@ -132,6 +163,4 @@ papers.search = function(keyword, orderby, user) {
         return a.factor - b.factor;
       });
     });
-}
-
-module.exports = papers;
+};
