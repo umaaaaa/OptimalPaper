@@ -1,14 +1,41 @@
 "use strict";
 
-var db = require('./db');
+var reviews = module.exports = {};
 
-var reviews = {};
+var db = require('./db');
+var papers = require('./papers');
+
+reviews.insert = function (repo, id_repo, rate, comment, user) {
+  if (!user) return Promise.reject(new Error('Need login'));
+
+  return papers.getOrSet(repo, id_repo)
+    .then(function(paper_id) {
+      return new Promise(function(resolve, reject) {
+        var now = new Date();
+        db.query(
+          'insert into review set ?',
+          {
+            user_id: user.id,
+            paper_id: paper_id,
+            rate: rate,
+            comment: comment,
+            reviewed_at: now
+          },
+          function(err, res) {
+            if (err) return reject(err);
+            resolve(res.insertId);
+          });
+      });
+    });
+};
+
 
 reviews.getByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(
       'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
-      'from review join user on user.id=user_id where paper_id=?',
+      'from review join user on user.id=user_id where paper_id=? '+
+      'order by reviewed_at desc',
       [paper_id],
       function(err, rows) {
         if (err) return reject(err);
@@ -18,7 +45,7 @@ reviews.getByPaper = function (paper_id) {
             id: row.id,
             paper_id: row.paper_id,
             rate: row.rate,
-            comment: row.rate,
+            comment: row.comment,
             reviewed_at: row.reviewed_at,
             user: {
               id: row.user_id,
@@ -30,7 +57,7 @@ reviews.getByPaper = function (paper_id) {
   });
 };
 
-reviews.getByPaper = function (paper_id) {
+reviews.getRecentByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(
       'select review.id,user_id,paper_id,rate,comment,reviewed_at,name,icon_url ' +
@@ -39,7 +66,7 @@ reviews.getByPaper = function (paper_id) {
       [paper_id],
       function(err, rows) {
         if (err) return reject(err);
-        if (rows.length != 1) return reject(new Error('Not exist'));
+        if (rows.length != 1) return resolve(null);
 
         var row = rows[0];
         resolve({
@@ -89,5 +116,3 @@ reviews.getRecent = function (count) {
         });
   });
 };
-
-module.exports = reviews;
