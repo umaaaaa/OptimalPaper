@@ -15,11 +15,16 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-box">
         <h2>論文検索</h2>
         <div id="custom-search-input">
-          <form class="form-search" method="get" id="keyword" action="/">
-            <div class="input-group col-md-12">
-              <input type="text" class="form-control input-lg" name="keyword" placeholder="キーワード" value=<%- @keyword %> />
+          <form class="form-search" method="get" id="keyword" action="/search">
+            <input type="radio" name="orderby" value="recent" checked>最近読まれた
+            <input type="radio" name="orderby" value="rating">評価が高い
+            <% if @user? : %>
+            <input type="radio" name="orderby" value="optimal">あなただけへの特別なおすすめ
+            <% end %>
+            <div class="input-group input-group-lg col-md-12">
+              <input type="text" class="form-control" name="keyword" placeholder="キーワード" value=<%- @keyword %> />
               <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="submit">
+                <button class="btn btn-info" type="submit">
                   <i class="glyphicon glyphicon-search"></i>
                 </button>
               </span>
@@ -35,9 +40,9 @@
 
   <div class="searchResult">
     <div class="row">
-<% for ov in @overviews : %>
-  <% include 'paper_template.ect', {overview: ov} %>
-<% end %>
+      <% for ov in @overviews : %>
+      <% include 'paper_template.ect', {overview: ov} %>
+      <% end %>
     </div>
   </div>
 
