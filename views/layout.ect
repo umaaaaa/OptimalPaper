@@ -44,7 +44,7 @@
           <div id="username"><%= @user.name %></div>
           <img id="icon" src="<%= @user.icon_url %>">
           <% else : %>
-          <button type="button" class="btn btn-primary">login<img id="twitter" src="/images/twitter.png"></button>
+          <a href="/auth/twitter" class="btn btn-primary" role="button">login<img id="twitter" src="/images/twitter.png"></a>
           <% end %>
         </div>
       </div>
