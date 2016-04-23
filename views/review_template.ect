@@ -12,8 +12,10 @@
         <% end %>
       </div>
       <div class="review-user">
-        <p><%- @review.user.name %></p>
-        <img src=<%- @review.user.icon_url %>>
+        <a href=<%= '/user/'+@review.user.id %>>
+          <p><%- @review.user.name %></p>
+          <img src=<%- @review.user.icon_url %>>
+        </a>
       </div>
     </div>
     <div class="review-comment">
