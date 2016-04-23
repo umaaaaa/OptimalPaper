@@ -5,6 +5,31 @@ var reviews = module.exports = {};
 var db = require('./db');
 var papers = require('./papers');
 
+
+reviews.attachToOverView = function(ov) {
+  if (!ov.paper_id) return Promise.resolve(ov);
+  return reviews.getRecentByPaper(ov.paper_id)
+    .then(function(rev) {
+      return reviews.getAvgRateByPaper(ov.paper_id)
+        .then(function(rate) {
+          ov.rate = rate;
+          ov.review = rev;
+          return ov;
+        });
+    });
+};
+
+reviews.getAvgRateByPaper = function(id) {
+  return db.queryPromise(
+      'select avg(rate+0.0) as avg_rate from review where paper_id=?',
+      [id])
+    .then(function(rows) {
+      if (rows.length != 1) throw new Error('Avg rate');
+      return rows[0].avg_rate;
+    });
+};
+
+
 reviews.insert = function (repo, id_repo, rate, comment, user) {
   if (!user) return Promise.reject(new Error('Need login'));
 

@@ -144,20 +144,16 @@ papers.getOptimal = function(count, user) {
   return Promise.resolve([]);
 };
 
+
 papers.search = function(keyword, orderby, user) {
   return cinii.searchOrderByCited(keyword)
     .then(function(ps){
       var overviews = ps.map(function(paper) {
         return papers.getPaperId(paper.repo, paper.id_repo)
           .then(function(paper_id){
-            if (!paper_id) return { paper: paper };
-
-            paper.paper_id = paper_id;
-            return reviews.getRecentByPaper(paper_id)
-              .then(function(review){
-                return { paper: paper, review: review };
-              });
-          });
+            return { paper: paper, paper_id: paper_id };
+          })
+          .then(reviews.attachToOverView);
       });
       return Promise.all(overviews);
     })
