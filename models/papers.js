@@ -98,34 +98,47 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     });
 };
 
+papers.atachToReviews = function(reviews) {
+    return Promise.all(reviews.map(function(rev){
+      return papers.getIdRepo(rev.paper_id)
+        .then(function(paper_repo){
+          return {
+            review: rev,
+            paper_repo: paper_repo
+          };
+        })
+        .then(function(res){
+          return papers
+            .fetchDetail(res.paper_repo.repo, res.paper_repo.id_repo)
+            .then(function(detail){
+              return {
+                review: res.review,
+                paper: detail
+              };
+            });
+        });
+    }));
+};
+
+papers.getByUser = function (user) {
+  //cinii APIを呼ぶので制限
+  //TODO:ほんとはちゃんとDBかキャッシュに持つ
+  var limited_count = 30;
+
+  return reviews.getByUser(user)
+    .then(function(revs) {
+      return revs.length > limited_count ? revs.slice(0, limited_count) : revs})
+    .then(papers.atachToReviews);
+};
+
 papers.getRecent = function (count) {
   //count回cinii APIを呼ぶので制限
   //TODO:ほんとはちゃんとDBかキャッシュに持つ
   var limited_count = Math.max(count, 10);
 
   return reviews.getRecent(limited_count)
-    .then(function(revs) {
-      return Promise.all(revs.map(function(rev){
-        return papers.getIdRepo(rev.paper_id)
-          .then(function(paper_repo){
-            return {
-              review: rev,
-              paper_repo: paper_repo
-            };
-          })
-          .then(function(res){
-            return papers
-              .fetchDetail(res.paper_repo.repo, res.paper_repo.id_repo)
-              .then(function(detail){
-                return {
-                  review: res.review,
-                  paper: detail
-                };
-              });
-          });
-      }));
-    });
-}
+    .then(papers.atachToReviews);
+};
 
 papers.getOptimal = function(count, user) {
   return Promise.resolve([]);
