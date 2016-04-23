@@ -68,7 +68,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
         return first_res.items;
 
       var starts = [];
-      for (let start=max_per_req; start<Math.min(max, total); sart+=max_per_req)
+      for (let start=max_per_req; start<Math.min(max, total); start+=max_per_req)
         starts.push(start);
 
       //残りの結果をmaxまで取得
