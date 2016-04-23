@@ -156,7 +156,7 @@ papers.getOptimal = function(count, user) {
 
 
 papers.search = function(keyword, orderby, user) {
-  return cinii.searchOrderByCited(keyword)
+  return cinii.searchOrderByCited(keyword, 200)
     .then(function(ps){
       var overviews = ps.map(function(paper) {
         return papers.getPaperId(paper.repo, paper.id_repo)
