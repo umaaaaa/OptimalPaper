@@ -16,10 +16,10 @@
         <h2>論文検索</h2>
         <div id="custom-search-input">
           <form class="form-search" method="get" id="keyword" action="/search">
-            <input type="radio" name="orderby" value="recent" checked>最近読まれた
-            <input type="radio" name="orderby" value="rating">評価が高い
+            <input type="radio" name="orderby" value="recent" <% if @orderby is 'recent' : %>checked<% end %>>最近読まれた
+            <input type="radio" name="orderby" value="rating" <% if @orderby is 'rating' : %>checked<% end %>>評価が高い
             <% if @user? : %>
-            <input type="radio" name="orderby" value="optimal">あなただけへの特別なおすすめ
+            <input type="radio" name="orderby" value="optimal"<% if @orderby is 'optimal' : %>checked<% end %>>あなただけへの特別なおすすめ
             <% end %>
             <div class="input-group input-group-lg col-md-12">
               <input type="text" class="form-control" name="keyword" placeholder="キーワード" value=<%- @keyword %> />
