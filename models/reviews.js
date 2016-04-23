@@ -57,6 +57,31 @@ reviews.getByPaper = function (paper_id) {
   });
 };
 
+reviews.getByUser = function (user) {
+  console.log(user);
+  return new Promise(function(resolve, reject) {
+    db.query(
+      'select id,user_id,paper_id,rate,comment,reviewed_at ' +
+      'from review where user_id=? '+
+      'order by reviewed_at desc',
+      [user.id],
+      function(err, rows) {
+        if (err) return reject(err);
+
+        resolve(rows.map(function(row){
+          return {
+            id: row.id,
+            paper_id: row.paper_id,
+            rate: row.rate,
+            comment: row.comment,
+            reviewed_at: row.reviewed_at,
+            user: user
+          };
+        }));
+      });
+  });
+};
+
 reviews.getRecentByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
     db.query(
@@ -82,10 +107,6 @@ reviews.getRecentByPaper = function (paper_id) {
         });
       });
   });
-};
-
-
-reviews.getByUserId = function (id) {
 };
 
 reviews.getRecent = function (count) {
