@@ -1,11 +1,11 @@
 "use strict";
 
+var papers = module.exports = {};
+
 var db = require('./db');
 var cinii = require('./cinii');
 var reviews = require('./reviews');
 var recommends = require('./recommends');
-
-var papers = {};
 
 var repos = { cinii: 1 }
 
@@ -163,5 +163,3 @@ papers.search = function(keyword, orderby, user) {
       });
     });
 };
-
-module.exports = papers;

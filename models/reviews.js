@@ -1,9 +1,9 @@
 "use strict";
 
+var reviews = module.exports = {};
+
 var db = require('./db');
 var papers = require('./papers');
-
-var reviews = {};
 
 reviews.insert = function (repo, id_repo, rate, comment, user) {
   if (!user) return Promise.reject(new Error('Need login'));
@@ -116,5 +116,3 @@ reviews.getRecent = function (count) {
         });
   });
 };
-
-module.exports = reviews;
