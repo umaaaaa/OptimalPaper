@@ -1,11 +1,12 @@
 "use strict";
 
 var db = require('./db');
+var papers = require('./papers');
 
 var reviews = {};
 
 reviews.insert = function (repo, id_repo, rate, comment, user) {
-  if (user) return Promise.reject(new Error('Need login'));
+  if (!user) return Promise.reject(new Error('Need login'));
 
   return papers.getOrSet(repo, id_repo)
     .then(function(paper_id) {

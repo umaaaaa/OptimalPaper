@@ -162,6 +162,6 @@ papers.search = function(keyword, orderby, user) {
         return a.factor - b.factor;
       });
     });
-}
+};
 
 module.exports = papers;
