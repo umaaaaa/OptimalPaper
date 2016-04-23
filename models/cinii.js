@@ -7,9 +7,13 @@ var cinii = {};
 //cinii
 var repo = 1;
 
+//cinii appid
+var appid = process.env.CINII_APPID;
+
 cinii.fetchDetailByNaid = function (naid) {
   return agent
       .get('http://ci.nii.ac.jp/naid/' + naid + '.json')
+      .query({appid:appid})
       .then(function (response) {
         var paper = response.body['@graph'][0];
         return {
@@ -50,6 +54,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
   return agent
     .get(endpoint)
     .query({
+      appid: appid,
       format: 'json',
       q: keyword,
       sortorder: citedBy,
@@ -57,7 +62,8 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
     })
     .then(function (response) {
       var first_res = response.body['@graph'][0];
-      var total = first_res['opensearch:totalResult'];
+      var total = first_res['opensearch:totalResults'];
+
       if (max<=max_per_req || total<=max_per_req)
         return first_res.items;
 
@@ -91,6 +97,7 @@ cinii.searchOrderByCited = function (keyword, opt_max) {
         });
     })
     .then(function(papers){
+      if (!papers) return [];
       return papers.map(function(paper){
         return {
           title: paper['title'],

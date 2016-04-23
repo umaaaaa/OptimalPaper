@@ -1,7 +1,7 @@
 <div class="box-container">
   <div class="box">
     <div class="star">
-      <% for star in [1..5] : %>
+      <% for star in [1..@overview.rate] : %>
         <% if star <= 3 : %>
           <span class="fa fa-2x fa-star"></span>
          <% else : %>
@@ -15,8 +15,10 @@
       </a>
       <p><%- @overview.paper.creators %></p>
       <p class="description"><%- @overview.paper.description %></p>
-      <!--
+      <%###
         @overview:{
+          rate, //レーティング(あれば)
+          factor, //評価値(あれば)
           paper: { //paperの葉の要素はundefの場合があり得るので注意
             title,
             creators[],
@@ -47,7 +49,7 @@
             }
           }
         }
-      -->
+      ###%>
     </div>
     <% include 'review_template.ect', {review: @overview.review} %>
   </div>
