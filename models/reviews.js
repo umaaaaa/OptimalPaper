@@ -6,7 +6,7 @@ var db = require('./db');
 var papers = require('./papers');
 
 
-reviews.attachToOverView = function(ov) {
+reviews.attachToOverview = function(ov) {
   if (!ov.paper_id) return Promise.resolve(ov);
   return reviews.getRecentByPaper(ov.paper_id)
     .then(function(rev) {
@@ -162,3 +162,19 @@ reviews.getRecent = function (count) {
         });
   });
 };
+
+reviews.getOverview = function(rev) {
+  return reviews.getAvgRateByPaper(rev.paper_id)
+    .then(function(rate) {
+      return {
+        review: rev,
+        rate: rate,
+        paper_id: rev.paper_id
+      };
+    });
+}
+
+reviews.getOverviews = function(revs) {
+  return Promise.all(revs.map(reviews.getOverview));
+}
+

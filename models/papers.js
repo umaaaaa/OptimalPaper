@@ -66,25 +66,33 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
   return papers
     .fetchDetail(repo, id_repo)
     .then(function(detail) {
+      detail.optimal = recommends.factor(repo, id_repo, 'optimal', user);
+      return detail;
+    })
+    .then(function(detail) {
       if (!detail.paper_id) return { detail:detail };
 
       return reviews.getByPaper(detail.paper_id)
         .then(function(revs) {
-          var myrev;
-          if (user) {
-            myrev = revs.find(function(rev) {
-              return rev.user.id == user.id;
-            });
-            revs = revs.filter(function(rev) {
-              return rev.user.id != user.id;
-            });
-          };
+          return reviews.getAvgRateByPaper(detail.paper_id)
+            .then(function(rate) {
+              var myrev;
+              if (user) {
+                myrev = revs.find(function(rev) {
+                  return rev.user.id == user.id;
+                });
+                revs = revs.filter(function(rev) {
+                  return rev.user.id != user.id;
+                });
+              };
 
-          return {
-            detail: detail,
-            reviews: revs,
-            my_review: myrev
-          };
+              return {
+                detail: detail,
+                rate: rate,
+                reviews: revs,
+                my_review: myrev
+              };
+            });
         });
     })
     .then(function(res) {
@@ -98,26 +106,26 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     });
 };
 
-papers.atachToReviews = function(reviews) {
-    return Promise.all(reviews.map(function(rev){
-      return papers.getIdRepo(rev.paper_id)
-        .then(function(paper_repo){
-          return {
-            review: rev,
-            paper_repo: paper_repo
-          };
-        })
-        .then(function(res){
-          return papers
-            .fetchDetail(res.paper_repo.repo, res.paper_repo.id_repo)
-            .then(function(detail){
-              return {
-                review: res.review,
-                paper: detail
-              };
-            });
-        });
-    }));
+papers.attachToOveriew = function(ov) {
+    return papers.getIdRepo(ov.paper_id)
+      .then(function(paper_repo){
+        return {
+          ov: ov,
+          paper_repo: paper_repo
+        };
+      })
+      .then(function(res){
+        return papers
+          .fetchDetail(res.paper_repo.repo, res.paper_repo.id_repo)
+          .then(function(detail){
+            res.ov.paper = detail;
+            return res.ov;
+          });
+      });
+};
+
+papers.attachToOveriews = function(ovs) {
+    return Promise.all(ovs.map(papers.attachToOveriew));
 };
 
 papers.getByUser = function (user) {
@@ -126,9 +134,10 @@ papers.getByUser = function (user) {
   var limited_count = 30;
 
   return reviews.getByUser(user)
+    .then(reviews.getOverviews)
     .then(function(revs) {
       return revs.length > limited_count ? revs.slice(0, limited_count) : revs})
-    .then(papers.atachToReviews);
+    .then(papers.attachToOverviews);
 };
 
 papers.getRecent = function (count) {
@@ -137,7 +146,8 @@ papers.getRecent = function (count) {
   var limited_count = Math.max(count, 10);
 
   return reviews.getRecent(limited_count)
-    .then(papers.atachToReviews);
+    .then(reviews.getOverviews)
+    .then(papers.attachToOveriews);
 };
 
 papers.getOptimal = function(count, user) {
@@ -153,7 +163,7 @@ papers.search = function(keyword, orderby, user) {
           .then(function(paper_id){
             return { paper: paper, paper_id: paper_id };
           })
-          .then(reviews.attachToOverView);
+          .then(reviews.attachToOverview);
       });
       return Promise.all(overviews);
     })
