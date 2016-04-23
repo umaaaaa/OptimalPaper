@@ -1,13 +1,20 @@
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+<div class="box-container">
   <div class="box">
     <div class="star">
       <% for star in [1..@overview.rate] : %>
-      <span class="fa fa-2x fa-star"></span>
+        <% if star <= 3 : %>
+          <span class="fa fa-2x fa-star"></span>
+         <% else : %>
+         <span class="fa fa-2x fa-star-o"></span>
+        <% end %>
       <% end %>
     </div>
     <div class="info">
-      <h4 class="text-center"><%- @overview.paper.title %></h4>
-      <p></p>
+      <a href=<%= '/paper/naid/' + @overview.paper.id_repo %>
+        <h4 class="text-center"><%- @overview.paper.title %></h4>
+      </a>
+      <p><%- @overview.paper.creators %></p>
+      <p class="description"><%- @overview.paper.description %></p>
       <%###
         @overview:{
           rate, //レーティング(あれば)
@@ -43,8 +50,7 @@
           }
         }
       ###%>
-      <a href=<%= '/paper/naid/' + @overview.paper.id_repo %> class="btn">learn more</a>
     </div>
+    <% include 'review_template.ect', {review: @overview.review} %>
   </div>
 </div>
-
