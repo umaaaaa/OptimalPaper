@@ -3,11 +3,12 @@
 <link href="/stylesheets/user.css" rel="stylesheet">
 <% end %>
 <div class="container">
-  <div id="profile" class="col-md-4">
-    <img name="picture" src="http://placehold.it/200x200">
-    <h2 name="name"> <%= @info.user.name %> さん </h2>
-    <ul id="user-detail" >
-      <li><img src="/images/calendar.png"> サービス登録日：2016/4/1 </li>
+  <div class="col-md-5">
+    <div id="profile">
+    <img name="picture" src=<%= @info.user.icon_url %> >
+    <h2 name="name"><%= @info.user.name %></h2>
+    <div id="user-detail"><ul>
+      <li><img src="/images/calendar.png"> サービス登録日：<%= @info.user.registered_at %> </li>
       <li><img src="/images/paper.png">読んだ論文数</li>
       <li>
         <ul>
@@ -15,15 +16,18 @@
           <li>最近100日：<%= @info.user.day100_reviews %> 本</li>
         </ul>
       </li>
-    </ul>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kininaru.site" data-text=【KININARU】"私は今まで<%= @info.user.all_reviews %>本の論文を読みました！現在のキニナル木のGradeは<%= @info.user.grade %>です！http://kininaru.site/user/<%= @info.user.id %>">Tweet</a>
+      <li>キニナル木のグレード：<%= @info.user.grade %></li>
+    </ul></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kininaru.site" data-text=【KININARU】"私は今まで<%= @info.user.all_reviews %>本の論文を読みました！現在のキニナル木のグレードは<%= @info.user.grade %>です！http://kininaru.site/user/<%= @info.user.id %>">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </div>
-  <div id="tree" class="col-md-5">
-    <h2><%= @info.user.name %>さんの知恵の木 </h2>
-    <p>Grade(0~5): <%= @info.user.grade %></p>
-    <img id="progress-tree" src="/images/tree-max.gif">
   </div>
+<div class="col-md-7">
+    <div id="tree">
+    <img src="/images/tree<%= @info.user.grade %>.png">
+    <div id="grade"><p><%= @info.user.grade %></p></div>
+  </div>
+</div>
 </div>
 <div class="container">
   <h1>読んだ論文</h1>
