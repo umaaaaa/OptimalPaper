@@ -149,7 +149,14 @@ papers.getRecent = function (count) {
 papers.getOptimal = function(count, user) {
   var limited_count = Math.max(count, 10);
 
-  return recommends.getByUser(user.id, limited_count);
+  return recommends.getByUser(user.id, limited_count)
+    .then(function(rcms) {
+      if (rcms.length >= limited_count) return rcms;
+      return papers.getRecent(limited_count-rcms.length)
+        then(function(rcts){
+          return rcms.concat(rcts);
+        });
+    });
 };
 
 
