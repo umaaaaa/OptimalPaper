@@ -168,15 +168,7 @@ papers.search = function(keyword, orderby, user) {
       return Promise.all(overviews);
     })
     .then(function(overviews){
-      var factored_overviews = overviews.map(function(ov, index) {
-        return recommends.factor(ov.paper_id, orderby, user)
-          .then(function(factor) {
-            ov.index = index;
-            ov.factor = factor;
-            return ov;
-          });
-      });
-      return Promise.all(factored_overviews);
+      return recommends.addFactors(overviews, orderby, user);
     })
     .then(function (factored_overviews) {
       return factored_overviews.sort(function(a,b) {
