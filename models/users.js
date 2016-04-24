@@ -41,7 +41,7 @@ users.getCountOfReviewsRecentDay = function(id, days) {
 
 //キニナル木の段階数への変換
 function grade(count) {
-  return Math.max(Math.floor((count+1) / 2 ), 5);
+  return Math.min(Math.floor((count+1) / 2 ), 5);
 }
 
 users.getByIdMore = function (id) {
