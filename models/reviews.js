@@ -57,6 +57,18 @@ reviews.insert = function (repo, id_repo, rate, comment, user) {
     });
 };
 
+function dateToStr(date){
+  var Y = date.getFullYear();
+  var M = date.getMonth() + 1;
+  var D = date.getDate();
+  var d = date.getDay();
+  var h = date.getHours();
+  var m = date.getMinutes();
+  var s = date.getSeconds();
+
+  var days = ['日', '月', '火', '水', '木', '金', '土'];
+  return Y+'年'+M+'月'+D+'日 ('+days[d]+') '+h+':'+m+':'+s;
+}
 
 reviews.getByPaper = function (paper_id) {
   return new Promise(function(resolve, reject) {
@@ -74,7 +86,7 @@ reviews.getByPaper = function (paper_id) {
             paper_id: row.paper_id,
             rate: row.rate,
             comment: row.comment,
-            reviewed_at: row.reviewed_at,
+            reviewed_at: dateToStr(row.reviewed_at),
             user: {
               id: row.user_id,
               name: row.name,
@@ -102,7 +114,7 @@ reviews.getByUser = function (user) {
             paper_id: row.paper_id,
             rate: row.rate,
             comment: row.comment,
-            reviewed_at: row.reviewed_at,
+            reviewed_at: dateToStr(row.reviewed_at),
             user: user
           };
         }));
@@ -127,7 +139,7 @@ reviews.getRecentByPaper = function (paper_id) {
           paper_id: row.paper_id,
           rate: row.rate,
           comment: row.comment,
-          reviewed_at: row.reviewed_at,
+          reviewed_at: dateToStr(row.reviewed_at),
           user: {
             id: row.user_id,
             name: row.name,
@@ -155,7 +167,7 @@ reviews.getRecent = function (count) {
               paper_id: row.paper_id,
               rate: row.rate,
               comment: row.comment,
-              reviewed_at: row.reviewed_at,
+              reviewed_at: dateToStr(row.reviewed_at),
               user: {
                 id: row.user_id,
                 name: row.name,
