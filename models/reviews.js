@@ -66,8 +66,12 @@ function dateToStr(date){
   var m = date.getMinutes();
   var s = date.getSeconds();
 
+  function pad(i){
+    return i < 10 ? '0'+i : i;
+  }
+  
   var days = ['日', '月', '火', '水', '木', '金', '土'];
-  return Y+'年'+M+'月'+D+'日 ('+days[d]+') '+h+':'+m+':'+s;
+  return Y+'年'+M+'月'+D+'日 ('+days[d]+')  '+pad(h)+':'+pad(m)+':'+pad(s);
 }
 
 reviews.getByPaper = function (paper_id) {
