@@ -4,13 +4,14 @@
 <link rel="stylesheet" href="/bower_components/rateYo/src/jquery.rateyo.css">
 <script src="/bower_components/rateYo/src/jquery.rateyo.js"></script>
 <script src="/javascripts/rateyo.js"></script>
+<script src="/javascripts/fit4recommend.js"></script>
 <% end %>
 
 
 <div class="container">
   <div class="paper">
     <div class="row">
-      <div class="box-container">
+      <div class="box-container col-lg-8">
         <div class="box">
           <div class="star">
           <% if @rate? : %>
@@ -106,9 +107,15 @@
           </div>
         </div>
       </div>
+      <div class="recommends col-lg-4">
+      <% for reco in @recommends : %>
+        <% if @user? : %>
+          <% include 'paper_template.ect', {overview: reco, user: @user} %>
+        <% else : %>
+          <% include 'paper_template.ect', {overview: reco} %>
+        <% end %>
+      <% end %>
+      </div>
     </div>
   </div>
-  <p><%= @json2str @reviews %></p>
-  <p><%= @json2str @rate %></p>
-  <p><%= @json2str @recommends %></p>
 </div>
