@@ -49,11 +49,6 @@ div > .review-user{
 	color: #717171;
 	font-size: 12px;
 	padding-top: 10px;
-	overflow: scroll;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 14;
-
 }
 
 .review-time > p{

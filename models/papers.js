@@ -66,10 +66,6 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
   return papers
     .fetchDetail(repo, id_repo)
     .then(function(detail) {
-      detail.optimal = recommends.factor(repo, id_repo, 'optimal', user);
-      return detail;
-    })
-    .then(function(detail) {
       if (!detail.paper_id) return { detail:detail };
 
       return reviews.getByPaper(detail.paper_id)
@@ -151,7 +147,16 @@ papers.getRecent = function (count) {
 };
 
 papers.getOptimal = function(count, user) {
-  return Promise.resolve([]);
+  var limited_count = Math.max(count, 10);
+
+  return recommends.getByUser(user.id, limited_count)
+    .then(function(rcms) {
+      if (rcms.length >= limited_count) return rcms;
+      return papers.getRecent(limited_count-rcms.length)
+        then(function(rcts){
+          return rcms.concat(rcts);
+        });
+    });
 };
 
 
@@ -168,18 +173,11 @@ papers.search = function(keyword, orderby, user) {
       return Promise.all(overviews);
     })
     .then(function(overviews){
-      var factored_overviews = overviews.map(function(ov) {
-        return recommends.factor(ov.paper_id, orderby, user)
-          .then(function(factor) {
-            ov.factor = factor;
-            return ov;
-          });
-      });
-      return Promise.all(factored_overviews);
+      return recommends.addFactors(overviews, orderby, user);
     })
     .then(function (factored_overviews) {
       return factored_overviews.sort(function(a,b) {
-        return a.factor - b.factor;
+        return (b.factor - a.factor) || (a.index - b.index);
       });
     });
 };
