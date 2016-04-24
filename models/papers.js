@@ -94,7 +94,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     .then(function(res) {
       if (!res.detail.paper_id) return res;
 
-      return recommends.getByPaper(res.detail.paper_id, 4, user)
+      return recommends.getByPaper(res.detail.paper_id, 4)
         .then(function (rcm) {
           res.recommends = rcm;
           return res;
