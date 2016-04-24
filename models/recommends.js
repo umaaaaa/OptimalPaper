@@ -92,15 +92,18 @@ recommends.addFactors = function (ovs, orderby, user){
   throw new Error('unsupport factor');
 }
 
-recommends.getByPaper = function (paper_id, max, user) {
-  return Promise.resolve([
-      {
-        title:"hoge"
-      },
-      {
-        title:"fuga"
-      }
-  ]);
+recommends.getByPaper = function (paper_id, max) {
+  return paperUserPaper(paper_id)
+    .then(function(pup) {
+      return pup.sort(function(a,b){return b.ratio - a.ratio;})
+        .slice(0, max)
+        .map(function(p){return p.paper_id;});
+    })
+    .then(function(ps) {
+      return Promise.resolve(ps.map(function(paper_id){return { paper_id: paper_id };}))
+        .then(reviews.attachToOverviews)
+        .then(papers.attachToOverviews);
+    });
 };
 
 

@@ -66,10 +66,6 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
   return papers
     .fetchDetail(repo, id_repo)
     .then(function(detail) {
-      detail.optimal = recommends.factor(repo, id_repo, 'optimal', user);
-      return detail;
-    })
-    .then(function(detail) {
       if (!detail.paper_id) return { detail:detail };
 
       return reviews.getByPaper(detail.paper_id)
