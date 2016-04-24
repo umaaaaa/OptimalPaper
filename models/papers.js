@@ -94,7 +94,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     .then(function(res) {
       if (!res.detail.paper_id) return res;
 
-      return recommends.getByPaper(res.detail.paper_id, 4, user)
+      return recommends.getByPaper(res.detail.paper_id, 4)
         .then(function (rcm) {
           res.recommends = rcm;
           return res;
@@ -102,7 +102,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     });
 };
 
-papers.attachToOveriew = function(ov) {
+papers.attachToOverview = function(ov) {
   return papers.getIdRepo(ov.paper_id)
       .then(function(paper_repo){
         return {
@@ -121,7 +121,7 @@ papers.attachToOveriew = function(ov) {
 };
 
 papers.attachToOverviews = function(ovs) {
-    return Promise.all(ovs.map(papers.attachToOveriew));
+    return Promise.all(ovs.map(papers.attachToOverview));
 };
 
 papers.getByUser = function (user) {
