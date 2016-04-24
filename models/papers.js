@@ -147,7 +147,7 @@ papers.getRecent = function (count) {
 
   return reviews.getRecent(limited_count)
     .then(reviews.getOverviews)
-    .then(papers.attachToOveriews);
+    .then(papers.attachToOverviews);
 };
 
 papers.getOptimal = function(count, user) {
