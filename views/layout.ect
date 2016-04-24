@@ -46,8 +46,10 @@
         <!-- ログインボタン -->
         <div id="login_button">
           <% if @user : %>
-          <div id="username"><%= @user.name %></div>
-          <img id="icon" src="<%= @user.icon_url %>">
+          <a href="/user/<%= @user.id %>">
+            <div id="username"><%= @user.name %></div>
+            <img id="icon" src="<%= @user.icon_url %>">
+          </a>
           <% else : %>
           <a href="/auth/twitter" class="btn btn-primary" style="background-color:#8dc63f; border: #8dc63f;" role="button">login<img id="twitter" src="/images/twitter.png"></a>
           <% end %>
