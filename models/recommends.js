@@ -30,7 +30,7 @@ function userPaperUserPaper(user_id){
       'join review as upu on upu.paper_id=up.paper_id '+ //user -> paper -> user
       'join review as upup on upup.user_id=upu.user_id '+ //user -> paper -> user -> paper
       'where up.user_id=? and upu.user_id<>? '+
-      'and exists (select 1 from review as up2 where up2.user_id=? and upup.paper_id=up2.paper_id) '+ //u, upu, (up)up
+      'and not exists (select 1 from review as up2 where up2.user_id=? and upup.paper_id=up2.paper_id) '+ //u, upu, (up)up
       'group by upup.paper_id', //論文毎にまとめる
       [user_id, user_id, user_id])
     .then(function(rows) {
