@@ -96,6 +96,7 @@
                   <input type="hidden" name="repo" value=<%=@detail.repo %>>
                   <input type="hidden" name="id_repo" value=<%=@detail.id_repo %>>
                   <label>評価：<div id="rateYo"></div></label>
+                  <label class="rate"><input type="hidden" name="rate" min=1 max=5 value=3></label>
                   <input type="submit" value="投稿">
                 </form>
               <% end %>
@@ -112,13 +113,15 @@
       </div>
       <div class="recommends col-sm-4 col-md-4 col-lg-4">
         <h4>おすすめの論文</h4>
-      <% for reco in @recommends : %>
-        <% if @user? : %>
-          <% include 'paper_template.ect', {overview: reco, user: @user} %>
-        <% else : %>
-          <% include 'paper_template.ect', {overview: reco} %>
+        <% if @recommends? : %>
+          <% for reco in @recommends : %>
+            <% if @user? : %>
+             <% include 'paper_template.ect', {overview: reco, user: @user} %>
+            <% else : %>
+            <% include 'paper_template.ect', {overview: reco} %>
+          <% end %>
+         <% end %>
         <% end %>
-      <% end %>
       </div>
     </div>
   </div>
