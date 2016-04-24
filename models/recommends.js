@@ -11,7 +11,13 @@ function rating(paper_id) {
 }
 
 function recent(paper_id) {
-  return Promise.reject(new Error('実装されてない'));
+  return db.queryPromise(
+      'select max(reviewed_at) as date from review where paper_id=?',
+      [paper_id])
+    .then(function(rows) {
+      if (rows.length != 1) throw new Error();
+      return rows[0].date.valueOf();
+    });
 }
 
 function optimal(paper_id, user) {
