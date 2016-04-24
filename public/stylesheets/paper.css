@@ -17,4 +17,19 @@
 	text-align: justify;
   margin-bottom:10px; 
 }
+form {
+  display: inline-block;
+ }
+form .comment {
+  margin-top:15px;
+}
 
+form  textarea {
+  width: 200px;
+  height: 100px;
+  vertical-align:middle;
+}
+
+form > input{
+  vertical-align:bottom;
+}

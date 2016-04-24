@@ -1,0 +1,33 @@
+{
+  "name": "jquery.rateit",
+  "authors": [
+    "Gideon Junge"
+  ],
+  "description": "Rating plugin for jQuery.",
+  "main": [
+    "scripts/jquery.rateit.js",
+    "scripts/rateit.css"
+  ],
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "keywords": [
+    "jQuery",
+    "RateIt",
+    "rating",
+    "stars"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/gjunge/rateit.js",
+  "version": "1.0.23",
+  "_release": "1.0.23",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.23",
+    "commit": "ee0920c688bf835e26586d59bdb08a394d20e406"
+  },
+  "_source": "https://github.com/gjunge/rateit.js.git",
+  "_target": "^1.0.23",
+  "_originalSource": "jquery.rateit",
+  "_direct": true
+}
