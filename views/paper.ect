@@ -1,17 +1,99 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
-<link href="stylesheets/index.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-<script src="/javascripts/app.js"></script>
+<link href="/stylesheets/paper.css" rel="stylesheet">
 <% end %>
 
 
 <div class="container">
   <p><%= @json2str @detail %></p>
-<% if @my_review : %>
+  <div class="paper">
+    <div class="row">
+      <div class="box-container">
+        <div class="box">
+          <div class="star">
+            <% for star in [1..5] : %>
+            <% if star <= @rate : %>
+            <span class="fa fa-2x fa-star"></span>
+            <% else : %>
+            <span class="fa fa-2x fa-star-o"></span>
+            <% end %>
+            <% end %>
+          </div>
+          <div class="info">
+            <a href=<%= '/paper/naid/' + @detail.id_repo %>>
+              <h4 class="text-center"><%- @detail.title %></h4>
+            </a>
+            <% if @detail.creators? : %>
+            <div class="creators">
+              <p>著者 : <%- @detail.creators %></p>
+            </div>
+            <% end %>
+            <% if @detail.publish_info? : %>
+            <div class="publish_info">
+              <% if @detail.publish_info.publisher? : %>
+              <div class="publisher">
+               <p>出版者 : <%- @detail.publish_info.publisher %></p>
+              </div>
+              <% end %>
+              <% if @detail.publish_info.date? : %>
+              <div class="date">
+                <p>日付 : <%- @detail.publish_info.date %></p>
+              </div>  
+              <% end %>
+              <% if @detail.publish_info.issn? : %>
+                <span>issn : <%- @detail.publish_info.issn %></span>
+              <% end %>
+              <% if @detail.publish_info.publicationName? : %>
+                <span><%- @detail.publish_info.publicationName %>, </span>
+              <% end %>
+              <% if @detail.publish_info.volume? : %>
+                <span><%- @detail.publish_info.volume %>巻, </span>
+              <% end %>
+              <% if @detail.publish_info.number? : %>
+               <span><%- @detail.publish_info.number %>号, </span>
+              <% end %>
+              <% if @detail.publish_info.page? : %>
+                <span>
+                <% if @detail.publish_info.page.start? : %>
+                  <%- @detail.publish_info.page.start %>
+                <% else : %> ?
+                <% end %>
+                から
+                <% if @detail.publish_info.page.end? : %>
+                  <%- @detail.publish_info.page.end %>
+                <% else : %> ?
+                <% end %>
+                ページ
+                </span>
+              <% end %>
+            </div>  
+            <% end %>
+            <% if @detail.description? : %>
+            <div class="description">
+              <p><%- @detail.description %></p>
+            </div>
+            <% end %>
+          </div>
+          <div class="reviews">
+            <div class="my_review">
+              <% if @my_review? : %>
+                <% include 'review_template.ect', {review: @my_review, my_review_flg: 1, user: @user } %>
+              <% end %>
+            </div>
+            <div class="others_reviews">
+              <% for review in @reviews : %>
+                <% include 'review_template.ect', {review: review, my_review_flg: 0 }%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @my_review : %>
   <p>自分のレビュー</p>
   <p><%= @json2str @my_review %></p>
-<% else if @user : %>
+  <% else if @user : %>
   <p>この論文にレビューを付ける</p>
   <form action="/review" method="post">
     <input type="hidden" name="repo" value=<%=@detail.repo %>>
@@ -20,7 +102,7 @@
     <label>comment: <textarea name="comment" placeholder="こめんと"></textarea></label>
     <input type="submit" value="投稿">
   </form>
-<% end %>
+  <% end %>
   <p><%= @json2str @reviews %></p>
   <p><%= @json2str @rate %></p>
   <p><%= @json2str @recommends %></p>

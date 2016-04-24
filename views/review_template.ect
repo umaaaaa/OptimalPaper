@@ -1,5 +1,5 @@
 <% if @review? : %>
-<div class="review-box">
+<div class="review-box <% if @my_review_flg is 1 : %> my-review <% else : %> others-review <% end %>">
   <div class="review-info">
     <div>
       <div class="review-star">

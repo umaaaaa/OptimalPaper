@@ -1,0 +1,20 @@
+.info > div > p {
+	color: #717171;
+	font-size: 12px;
+	text-align: justify;
+}
+
+.publish_info > div > p {
+	color: #717171;
+	font-size: 12px;
+	text-align: justify;
+}
+
+.publish_info > span{
+  display:inline-block;
+	color: #717171;
+	font-size: 12px;
+	text-align: justify;
+  margin-bottom:10px; 
+}
+

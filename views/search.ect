@@ -41,7 +41,7 @@
   <div class="searchResult">
     <div class="row">
       <% for ov in @overviews : %>
-      <% include 'paper_template.ect', {overview: ov} %>
+      <% include 'paper_template.ect', {overview: ov, user: @user} %>
       <% end %>
     </div>
   </div>
