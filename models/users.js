@@ -49,7 +49,7 @@ users.getByIdMore = function (id) {
     .then(function(user) {
       return users.getCountOfReviews(id)
         .then(function(count) {
-          return users.getCountOfReviewsRecentDay(100)
+          return users.getCountOfReviewsRecentDay(id,100)
             .then(function(recent_count) {
               user.all_reviews = count;
               user.day100_reviews = recent_count;
