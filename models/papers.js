@@ -107,7 +107,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
 };
 
 papers.attachToOveriew = function(ov) {
-    return papers.getIdRepo(ov.paper_id)
+  return papers.getIdRepo(ov.paper_id)
       .then(function(paper_repo){
         return {
           ov: ov,
@@ -124,7 +124,7 @@ papers.attachToOveriew = function(ov) {
       });
 };
 
-papers.attachToOveriews = function(ovs) {
+papers.attachToOverviews = function(ovs) {
     return Promise.all(ovs.map(papers.attachToOveriew));
 };
 
