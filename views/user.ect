@@ -34,7 +34,11 @@
   <div class="paper">
     <div class="row">
       <% for ov in @info.overviews : %>
-        <% include 'paper_template.ect', {overview: ov} %>
+        <% if @user? : %>
+          <% include 'paper_template.ect', {overview: ov, user: @user} %>
+        <% else : %>
+          <% include 'paper_template.ect', {overview: ov} %>
+        <% end %>
       <% end %>
     </div>
   </div>

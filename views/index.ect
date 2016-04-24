@@ -74,7 +74,7 @@
 
         <% for ov in @overviews: %>
         <div class="animate-box">
-          <% include 'paper_template.ect', { overview: ov} %>
+          <% include 'paper_template.ect', { overview: ov, user: @user} %>
           <% end %>
         </div>
 
