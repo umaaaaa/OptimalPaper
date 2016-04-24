@@ -3,13 +3,13 @@
   <div class="review-info">
     <div>
       <div class="review-star">
-        <% for star in [1..5] : %>
+         <% for star in [1..5] : %>
           <% if star <= @review.rate : %>
             <span class="fa fa-star"></span>
           <% else : %>
             <span class="fa fa-star-o"></span>
           <% end %>
-        <% end %>
+         <% end %>
       </div>
       <div class="review-user">
         <a href=<%= '/user/'+@review.user.id %>>
