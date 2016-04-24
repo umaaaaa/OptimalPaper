@@ -1,10 +1,6 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
 <link href="/stylesheets/user.css" rel="stylesheet">
-<link href="/stylesheets/paper_template.css" rel="stylesheet">
-<link href="/stylesheets/review_template.css" rel="stylesheet">
-<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <% end %>
 <div class="container">
   <div class="col-md-5">
@@ -38,7 +34,11 @@
   <div class="paper">
     <div class="row">
       <% for ov in @info.overviews : %>
-        <% include 'paper_template.ect', {overview: ov} %>
+        <% if @user? : %>
+          <% include 'paper_template.ect', {overview: ov, user: @user} %>
+        <% else : %>
+          <% include 'paper_template.ect', {overview: ov} %>
+        <% end %>
       <% end %>
     </div>
   </div>

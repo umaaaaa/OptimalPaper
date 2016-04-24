@@ -7,6 +7,10 @@
 	display: block;
 }
 
+.my-review {
+  border-left: solid 10px green;
+}
+
 div > .review-star {
   width:50%;
   top:50%;

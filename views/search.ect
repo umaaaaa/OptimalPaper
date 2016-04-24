@@ -1,9 +1,5 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
-<link href="/stylesheets/paper_template.css" rel="stylesheet">
-<link href="/stylesheets/review_template.css" rel="stylesheet">
-<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <!-- Animate.css -->
 <link rel="stylesheet" href="../src/css/animate.css">
 <% end %>
@@ -41,7 +37,7 @@
   <div class="searchResult">
     <div class="row">
       <% for ov in @overviews : %>
-      <% include 'paper_template.ect', {overview: ov} %>
+      <% include 'paper_template.ect', {overview: ov, user: @user} %>
       <% end %>
     </div>
   </div>

@@ -19,6 +19,9 @@ reviews.attachToOverview = function(ov) {
     });
 };
 
+reviews.attachToOverviews = function(ovs) {
+  return Promise.all(ovs.map(reviews.attachToOverview));
+};
 reviews.getAvgRateByPaper = function(id) {
   return db.queryPromise(
       'select avg(rate+0.0) as avg_rate from review where paper_id=?',

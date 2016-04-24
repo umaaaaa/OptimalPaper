@@ -1,9 +1,5 @@
 <% extend 'layout.ect' %>
 <% block 'css' : %>
-<!-- FIXME:font-awesomeとりあえずつかってるだけだから、使わなくなったら消す -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-
-
 <!-- Animate.css -->
 <link rel="stylesheet" href="../src/css/animate.css">
 <!-- Flexslider -->
@@ -62,15 +58,19 @@
     <div class="container">
       <div class="row row-bottom-padded-md">
         <div class="col-md-6 col-md-offset-3 text-center">
-          <h2 class="fh5co-lead animate-box">おすすめ論文</h2>
-          <p class="fh5co-sub-lead animate-box">評価高くてまじオススメ</p>
+          <% if @user? : %>
+            <h2 class="fh5co-lead animate-box">おすすめ論文</h2>
+          <p class="fh5co-sub-lead animate-box">あなたにあったおすすめの論文です</p>
+          <% else : %>
+            <h2 class="fh5co-lead animate-box">最近読まれた論文</h2>
+          <% end %>
         </div>
       </div>
       <div class="row">
 
         <% for ov in @overviews: %>
         <div class="animate-box">
-          <% include 'paper_template.ect', { overview: ov} %>
+          <% include 'paper_template.ect', { overview: ov, user: @user} %>
           <% end %>
         </div>
 
@@ -84,7 +84,7 @@
     <div class="container">
       <div class="col-md-6 col-md-push-6">
         <figure class="fh5co-feature-image animate-box">
-          <img src="../src/images/macbook.png" alt="Free HTML5 Bootstrap Template by FREEHTML5.co">
+          <img src="../src/images/tree.png" alt="Free HTML5 Bootstrap Template by FREEHTML5.co">
         </figure>
       </div>
       <div class="col-md-6 col-md-pull-6">

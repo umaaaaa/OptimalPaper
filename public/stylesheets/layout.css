@@ -39,7 +39,7 @@
   width:20px;
 }
 
-#username {
+#login_button > a > div {
   margin-top:10px;
   display:inline-block;
   color:green;
