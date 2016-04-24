@@ -1,4 +1,5 @@
 # [KININARU](http://kininaru.site)
+![](https://raw.github.com/wiki/umaaaaa/optimal-paper/public/images/logo.png)
 
 ## サービス説明
 - みんなと論文を読もう！
