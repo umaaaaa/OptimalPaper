@@ -30,11 +30,11 @@
             <h2 class="animate-box"><img src="images/LogoFactory.jpg" alt="Image" class="img-responsive"></h2>
             <div id="custom-search-input">
               <form class="form-search animate-box" method="get" id="keyword" action="/search">
-                  <input type="radio" name="orderby" value="recent" <% if @orderby is 'recent' : %><%= checked %><% end %>>最近読まれた
-                  <input type="radio" name="orderby" value="rating" <% if @orderby is 'rating': %><%= checked %><% end %> >評価が高い
-                  <% if @user? : %>
-                  <input type="radio" name="orderby" value="optimal">あなただけへの特別なおすすめ
-                  <% end %>
+                <% if @user? : %>
+                <input type="radio" name="orderby" value="optimal"<% if @orderby is 'optimal' : %>checked<% end %>>あなただけへの特別なおすすめ
+                <% end %>
+                <input type="radio" name="orderby" value="rating" <% if @orderby is 'rating': %>checked<% else : %>checked<% end %> >評価が高い
+                <input type="radio" name="orderby" value="recent" <% if @orderby is 'recent' : %>checked<% end %>>最近読まれた
                 <div class="input-group input-group-lg col-md-12">
                   <input type="text" style="color:#000000" class="form-control" name="keyword" placeholder="キーワード" value="" />
                   <span class="input-group-btn">
@@ -69,9 +69,9 @@
       <div class="row">
 
         <% for ov in @overviews: %>
-          <div class="animate-box">
-            <% include 'paper_template.ect', { overview: ov} %>
-        <% end %>
+        <div class="animate-box">
+          <% include 'paper_template.ect', { overview: ov} %>
+          <% end %>
         </div>
 
       </div>
