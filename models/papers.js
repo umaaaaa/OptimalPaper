@@ -102,7 +102,7 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
     });
 };
 
-papers.attachToOveriew = function(ov) {
+papers.attachToOverview = function(ov) {
   return papers.getIdRepo(ov.paper_id)
       .then(function(paper_repo){
         return {
