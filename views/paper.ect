@@ -112,13 +112,15 @@
       </div>
       <div class="recommends col-sm-4 col-md-4 col-lg-4">
         <h4>おすすめの論文</h4>
-      <% for reco in @recommends : %>
-        <% if @user? : %>
-          <% include 'paper_template.ect', {overview: reco, user: @user} %>
-        <% else : %>
-          <% include 'paper_template.ect', {overview: reco} %>
+        <% if @recommends? : %>
+          <% for reco in @recommends : %>
+            <% if @user? : %>
+             <% include 'paper_template.ect', {overview: reco, user: @user} %>
+            <% else : %>
+            <% include 'paper_template.ect', {overview: reco} %>
+          <% end %>
+         <% end %>
         <% end %>
-      <% end %>
       </div>
     </div>
   </div>
