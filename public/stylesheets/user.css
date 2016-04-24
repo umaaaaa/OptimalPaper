@@ -1,39 +1,70 @@
 #profile{
-	margin: 50px;
-	margin-top:100px;
-	display: block;
-	text-align:center;
+  margin-top: 40px;
+  text-align:center;
+}
+
+#profile > img{
+  width:200px;
+  height:200px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.colored-box {
+  margin-top: 20px;
+  background-color: #ECF9C9;
+  padding: 20px;
+  border-radius: 3px;
+  display: block;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 h2[name="name"]{
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 img[name="picture"] {
-	padding-bottom:20px;
-/*	display:inline-block;*/
+  padding-bottom:20px;
+  /*	display:inline-block;*/
 }
 
 #user-detail{
-	list-style:none;
-	text-align:left;
-	margin-left:50px;
-	font-size:15px;
+  margin: 0 auto;
+  width: 300px;
+}
+#user-detail > ul{
+  list-style:none;
+  text-align:left;
+  font-size:18px;
+  padding: 0;
 }
 
-#user-detail > li {
-	margin-bottom:8px;
+#user-detail li {
+  margin-bottom:8px;
 }
 
-#user-detail > ul > li {
-	margin-bottom:3px;
+#grade {
+  margin-bottom:420px
 }
 
-#tree {
-	margin:30px;
+#grade > p {
+  text-align: center;
+  color: #f5ffb5;
+  margin: -420px auto 0;
+  font-size: 96pt;
+  height:0px;
+  text-shadow: 2px 2px 1px #f84,
+                -2px 2px 1px #f84,
+                2px -2px 1px #f84,
+                -2px -2px 1px #f84;
 }
 
-#progress-tree {
-	width:500px;
+#grade + div{
+  margin-top:400px;
+}
+
+#tree > img {
+  margin: 0 auto;
+  width: 70%;
+  display:block;
 }
 

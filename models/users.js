@@ -12,8 +12,14 @@ users.getById = function (id) {
         if (err) return reject(err);
         if (rows.length == 1) return resolve(rows[0]);
         reject(new Error('Count of selected user is not 1'));
-      });
-  });
+      })
+    })
+    .then(function(user){
+      var reg = user.registered_at;
+      var reg_at = reg.getFullYear() + '年' + (reg.getMonth()+1) + '月' + reg.getDate() + '日';
+      user.registered_at = reg_at;
+      return user;
+    });
 };
 
 users.getCountOfReviews = function(id) {
