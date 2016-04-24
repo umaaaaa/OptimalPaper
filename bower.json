@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "jquery.rateit": "^1.0.23",
     "rateYo": "rateyo#^2.1.0"
   }
 }
