@@ -8,7 +8,6 @@
 
 
 <div class="container">
-  <p><%= @json2str @detail %></p>
   <div class="paper">
     <div class="row">
       <div class="box-container">
@@ -109,19 +108,6 @@
       </div>
     </div>
   </div>
-  <% if @my_review : %>
-  <p>自分のレビュー</p>
-  <p><%= @json2str @my_review %></p>
-  <% else if @user : %>
-  <p>この論文にレビューを付ける</p>
-  <form action="/review" method="post">
-    <input type="hidden" name="repo" value=<%=@detail.repo %>>
-    <input type="hidden" name="id_repo" value=<%=@detail.id_repo %>>
-    <label>rate: <input type="number" name="rate" min=1 max=5 name=></label>
-    <label>comment: <textarea name="comment" placeholder="こめんと"></textarea></label>
-    <input type="submit" value="投稿">
-  </form>
-  <% end %>
   <p><%= @json2str @reviews %></p>
   <p><%= @json2str @rate %></p>
   <p><%= @json2str @recommends %></p>
