@@ -121,7 +121,7 @@ papers.attachToOveriew = function(ov) {
 };
 
 papers.attachToOverviews = function(ovs) {
-    return Promise.all(ovs.map(papers.attachToOveriew));
+    return Promise.all(ovs.map(papers.attachToOverview));
 };
 
 papers.getByUser = function (user) {

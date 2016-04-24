@@ -20,7 +20,7 @@ reviews.attachToOverview = function(ov) {
 };
 
 reviews.attachToOverviews = function(ovs) {
-    return Promise.all(ovs.map(reviews.attachToOveriew));
+  return Promise.all(ovs.map(reviews.attachToOverview));
 };
 reviews.getAvgRateByPaper = function(id) {
   return db.queryPromise(
