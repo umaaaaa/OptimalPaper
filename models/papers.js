@@ -66,10 +66,6 @@ papers.fetchDetailWithRecommend = function(repo, id_repo, user) {
   return papers
     .fetchDetail(repo, id_repo)
     .then(function(detail) {
-      detail.optimal = recommends.factor(repo, id_repo, 'optimal', user);
-      return detail;
-    })
-    .then(function(detail) {
       if (!detail.paper_id) return { detail:detail };
 
       return reviews.getByPaper(detail.paper_id)
@@ -151,7 +147,16 @@ papers.getRecent = function (count) {
 };
 
 papers.getOptimal = function(count, user) {
-  return Promise.resolve([]);
+  var limited_count = Math.max(count, 10);
+
+  return recommends.getByUser(user.id, limited_count)
+    .then(function(rcms) {
+      if (rcms.length >= limited_count) return rcms;
+      return papers.getRecent(limited_count-rcms.length)
+        then(function(rcts){
+          return rcms.concat(rcts);
+        });
+    });
 };
 
 
