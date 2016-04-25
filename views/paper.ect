@@ -96,8 +96,10 @@
                   <input type="hidden" name="repo" value=<%=@detail.repo %>>
                   <input type="hidden" name="id_repo" value=<%=@detail.id_repo %>>
                   <label>評価：<div id="rateYo"></div></label>
-                  <label class="rate"><input type="hidden" name="rate" min=1 max=5 value=3></label>
-                  <input type="submit" value="投稿">
+                  <div>
+                    <label class="rate"><input type="hidden" name="rate" min=1 max=5 value=3></label>
+                  </div>
+                  <button type="submit" class="btn btn-default">投稿</button>
                 </form>
               <% end %>
             </div>

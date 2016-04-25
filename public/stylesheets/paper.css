@@ -19,17 +19,22 @@
 }
 form {
   display: inline-block;
+  width: 100%;
+ }
+
+ form > label { 
+  width: 100%;
  }
 form .comment {
   margin-top:15px;
+  width:100%;
 }
 
 form  textarea {
-  width: 200px;
-  height: 100px;
+  width: 100%;
   vertical-align:middle;
 }
 
-form > input{
+form > button{
   vertical-align:bottom;
 }
